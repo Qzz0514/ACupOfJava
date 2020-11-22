@@ -14,7 +14,7 @@ public interface UserDao {
 
     //登录
     @Select("select * from user where email = #{email} and password = #{password}")
-    public User loginUser(Map<String,String> map);
+    public User loginUser(String email,String password);
 
 
 

@@ -1,5 +1,6 @@
 package group.ACupOfJava.controller;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.UserService;
 import group.ACupOfJava.util.StringUtil;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.beans.PropertyVetoException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -32,7 +34,8 @@ public class UserController {
     @RequestMapping("find")
     @ResponseBody
     public String find() {
-        System.out.println(userService.find());
+        //System.out.println(userService.find());
+        System.out.println(userService.loginUser("123456","123"));
         return "ok";
     }
 
@@ -53,9 +56,7 @@ public class UserController {
 
             }
             else {
-                HashMap<String, String> map = new HashMap<>();
-                map.put(email, password);
-                User currentuser = userService.loginUser(map);
+                User currentuser = userService.loginUser(email,password);
                 if (currentuser == null) {
                     request.setAttribute("error", "用户名或密码错误");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -92,12 +93,7 @@ public class UserController {
 
     @Test
     public void Test2(){
-        /*1234,123456*/
-        HashMap<String, String> map = new HashMap<>();
-        map.put("123", "123456");
-        System.out.println(map.toString());
-        User user = userService.loginUser(map);
-        System.out.println(userService.loginUser(map));
+        System.out.println(userService.find());
     }
 
 
