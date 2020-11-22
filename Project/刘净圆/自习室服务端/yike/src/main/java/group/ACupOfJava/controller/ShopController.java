@@ -1,5 +1,8 @@
 package group.ACupOfJava.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.service.ShopService;
 import org.json.JSONArray;
@@ -14,6 +17,7 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -32,14 +36,14 @@ public class ShopController {
     @RequestMapping("find")
     @ResponseBody
     public void find(HttpServletRequest request, HttpServletResponse response) {
+        Gson gson = new Gson();
+        List<Shop> shops = shopService.shopList();
+        gson.toJson(shops);
 
-        /*List<Shop> shops = shopService.shopList();
-        JsonArray jsonArray = new JSONArray();
-        for (int i = 0; i < shops.size(); i++) {
-            Shop shop = shops.get(i);
-            JsonObject jsonObject = new JSONObject();
 
-        }*/
+
+
+
     }
 
 
