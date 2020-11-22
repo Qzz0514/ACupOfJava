@@ -138,6 +138,15 @@
       <artifactId>json</artifactId>
       <version>20160810</version>
     </dependency>
+
+    <!--引入GSON依赖-->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.6</version>
+    </dependency>
+
+
   </dependencies>
 
 

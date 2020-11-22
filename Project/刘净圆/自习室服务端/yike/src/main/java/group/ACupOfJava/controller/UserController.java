@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import sun.misc.ASCIICaseInsensitiveComparator;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.beans.PropertyVetoException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -62,7 +60,6 @@ public class UserController {
                 if (currentuser == null) {
                     request.setAttribute("error", "用户名或密码错误");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
-
                 } else {
                     session.setAttribute("currentUser", currentuser);
                     response.sendRedirect("xxx");
@@ -89,9 +86,8 @@ public class UserController {
         source.setUser("root");
         source.setPassword("0814Xyr2000@me");
         jdbcTemplate.setDataSource(source);
-        List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
-        //jdbcTemplate.update("insert into shop values (1,'test','aaa.jpg','shjiazhuang','2020-11-22','2020-12-31',1,1)");
-        System.out.println(query.get(0));
+        //List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
+        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop1','img1','sjz','2020-11-1','2020-12-31',1,1)");
     }
 
 
