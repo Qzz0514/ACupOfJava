@@ -1,5 +1,4 @@
 package group.ACupOfJava.controller;
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.UserService;
@@ -95,7 +94,7 @@ public class UserController {
     public void Test2(){
         /*1234,123456*/
         HashMap<String, String> map = new HashMap<>();
-        map.put("1234", "123456");
+        map.put("123", "123456");
         System.out.println(map.toString());
         User user = userService.loginUser(map);
         System.out.println(userService.loginUser(map));

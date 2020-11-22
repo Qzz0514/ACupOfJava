@@ -13,7 +13,7 @@ public interface UserDao {
     public List<User> find();
 
     //登录
-    @Select("select * from user where email = #{email} and name = #{name}")
+    @Select("select * from user where email = #{email} and password = #{password}")
     public User loginUser(Map<String,String> map);
 
 
