@@ -18,16 +18,6 @@ public interface ShopDao {
 
 
     @Select("select * from shop")
-    @Results({
-            @Result(column = "id", property = "id"),
-            @Result(column = "name",property = "name"),
-            @Result(column = "image",property = "image"),
-            @Result(column = "location",property = "location"),
-            @Result(column = "starttime",property = "starttime"),
-            @Result(column = "endtime",property = "endtime"),
-            @Result(column = "likes",property = "likes"),
-            @Result(column = "stars",property = "stars")
-    })
     public List<Shop> shopList();
 
 }

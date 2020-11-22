@@ -18,7 +18,6 @@ public class ShopSerivceImpl implements ShopService {
     @Autowired
     private ShopDao shopDao;
 
-
     @Override
     public List<Shop> shopList() {
         return shopDao.shopList();

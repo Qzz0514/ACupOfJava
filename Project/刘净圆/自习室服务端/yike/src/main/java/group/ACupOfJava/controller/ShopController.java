@@ -17,6 +17,7 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -35,13 +36,12 @@ public class ShopController {
 
     @RequestMapping("find")
     @ResponseBody
-    public void find(HttpServletRequest request, HttpServletResponse response) {
+    public String find(HttpServletRequest request, HttpServletResponse response) {
         Gson gson = new Gson();
         List<Shop> shops = shopService.shopList();
-        gson.toJson(shops);
-
-
-
+        System.out.println(shops);
+        String str = gson.toJson(shops);
+        return str;
 
 
     }
