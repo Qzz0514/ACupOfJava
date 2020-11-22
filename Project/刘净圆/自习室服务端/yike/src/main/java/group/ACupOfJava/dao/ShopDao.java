@@ -14,6 +14,6 @@ import java.util.List;
 public interface ShopDao {
 
     @Select("select * from shop")
-    public List<Shop> shopList(Shop shop);
+    public List<Shop> shopList();
 
 }

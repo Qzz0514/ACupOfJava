@@ -90,6 +90,7 @@ public class UserController {
         source.setPassword("0814Xyr2000@me");
         jdbcTemplate.setDataSource(source);
         List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
+        //jdbcTemplate.update("insert into shop values (1,'test','aaa.jpg','shjiazhuang','2020-11-22','2020-12-31',1,1)");
         System.out.println(query.get(0));
     }
 

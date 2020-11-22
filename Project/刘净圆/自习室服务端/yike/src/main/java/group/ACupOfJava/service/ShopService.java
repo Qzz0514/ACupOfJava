@@ -11,5 +11,5 @@ import java.util.List;
  * @Date:2020/11/22 10:46
  */
 public interface ShopService {
-    public List<Shop> shopList(Shop shop);
+    public List<Shop> shopList();
 }
