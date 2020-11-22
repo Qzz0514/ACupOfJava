@@ -34,8 +34,7 @@ public class UserController {
     @RequestMapping("find")
     @ResponseBody
     public String find() {
-        //System.out.println(userService.find());
-        System.out.println(userService.loginUser("123456","123"));
+        System.out.println(userService.find());
         return "ok";
     }
 

@@ -17,8 +17,4 @@ public interface UserDao {
     public User loginUser(String email,String password);
 
 
-
-
-
-
 }
