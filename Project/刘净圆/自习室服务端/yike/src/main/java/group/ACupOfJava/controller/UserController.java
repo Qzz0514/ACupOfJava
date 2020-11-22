@@ -3,6 +3,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.UserService;
+import group.ACupOfJava.service.impl.UserServiceImpl;
 import group.ACupOfJava.util.StringUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping("find")
     @ResponseBody
     public String find() {
         System.out.println(userService.find());
+        Map<String, String> map = new HashMap<>();
+        map.put("email","1233456");
+        map.put("password","123");
+        User user = userService.loginUser(map);
+        System.out.println(user);
         return "ok";
     }
 
@@ -55,7 +60,10 @@ public class UserController {
 
             }
             else {
-                User currentuser = userService.loginUser(email,password);
+                Map<String, String> map = new HashMap<>();
+                map.put("email",email);
+                map.put("password",password);
+                User currentuser = userService.loginUser(map);
                 if (currentuser == null) {
                     request.setAttribute("error", "用户名或密码错误");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -85,14 +93,15 @@ public class UserController {
         source.setUser("root");
         source.setPassword("0814Xyr2000@me");
         jdbcTemplate.setDataSource(source);
-        //List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop1','img1','sjz','2020-11-1','2020-12-31',1,1)");
+        List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
+        System.out.println(query.get(0));
+        //jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop1','img1','sjz','2020-11-1','2020-12-31',1,1)");
     }
 
 
     @Test
-    public void Test2(){
-        System.out.println(userService.find());
+    public void test2(){
+
     }
 
 

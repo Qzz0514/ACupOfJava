@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Map;
 public interface UserService {
     public List<User> find();
-    public User loginUser(String email,String password);
+    public User loginUser(Map<String,String> map);
 }

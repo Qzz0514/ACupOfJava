@@ -10,11 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserDao {
+
     public List<User> find();
 
     //登录
     @Select("select * from user where email = #{email} and password = #{password}")
-    public User loginUser(String email,String password);
+    public User loginUser(Map<String,String> map);
 
 
 }
