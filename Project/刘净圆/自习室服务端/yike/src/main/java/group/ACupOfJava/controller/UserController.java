@@ -89,9 +89,12 @@ public class UserController {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         ComboPooledDataSource source = new ComboPooledDataSource();
         source.setDriverClass("com.mysql.jdbc.Driver");
-        source.setJdbcUrl("jdbc:mysql://123.57.63.212:3306/yike");
+        /*source.setJdbcUrl("jdbc:mysql://123.57.63.212:3306/yike");
         source.setUser("root");
-        source.setPassword("0814Xyr2000@me");
+        source.setPassword("0814Xyr2000@me");*/
+        source.setJdbcUrl("jdbc:mysql://localhost:3306/yike");
+        source.setUser("root");
+        source.setPassword("");
         jdbcTemplate.setDataSource(source);
         List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
         System.out.println(query.get(0));

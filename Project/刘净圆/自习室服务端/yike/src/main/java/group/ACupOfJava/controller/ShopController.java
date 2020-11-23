@@ -35,6 +35,9 @@ public class ShopController {
 
     @Autowired
     private ShopService shopService;
+
+
+
     @RequestMapping("find")
     @ResponseBody
     public String find(HttpServletRequest request, HttpServletResponse response) {
@@ -98,6 +101,16 @@ public class ShopController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @RequestMapping("findMyLikes")
+    @ResponseBody
+    public String findMyLikes(){
+        Gson gson = new Gson();
+        List<Shop> shops = shopService.myShopList(1);
+        System.out.println(shops);
+        String str = gson.toJson(shops);
+        return str;
     }
 
 

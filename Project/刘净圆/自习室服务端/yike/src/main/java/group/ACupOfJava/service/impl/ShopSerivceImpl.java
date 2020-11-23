@@ -22,4 +22,8 @@ public class ShopSerivceImpl implements ShopService {
     public List<Shop> shopList() {
         return shopDao.shopList();
     }
+
+    public List<Shop> myShopList(int id) {
+        return shopDao.myShopList(id);
+    }
 }
