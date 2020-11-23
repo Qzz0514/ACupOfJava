@@ -16,7 +16,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <mvc:annotation-driven></mvc:annotation-driven>
     <!--内部资源视图解析器-->
     <bean id="resourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/html/"></property>
+        <property name="prefix" value="/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
     <!--开放静态资源访问权限-->
