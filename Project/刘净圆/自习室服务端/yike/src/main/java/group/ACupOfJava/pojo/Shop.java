@@ -11,10 +11,10 @@ public class Shop {
     private String name;
     private String image;
     private String location;
-    private String startime;
+    private String starttime;
     private String endtime;
-    private int star;
-    private int like;
+    private int likes;
+    private int stars;
 
     public int getId() {
         return id;
@@ -48,12 +48,12 @@ public class Shop {
         this.location = location;
     }
 
-    public String getStartime() {
-        return startime;
+    public String getStarttime() {
+        return starttime;
     }
 
-    public void setStartime(String startime) {
-        this.startime = startime;
+    public void setStarttime(String starttime) {
+        this.starttime = starttime;
     }
 
     public String getEndtime() {
@@ -64,20 +64,20 @@ public class Shop {
         this.endtime = endtime;
     }
 
-    public int getStar() {
-        return star;
+    public int getLikes() {
+        return likes;
     }
 
-    public void setStar(int star) {
-        this.star = star;
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
-    public int getLike() {
-        return like;
+    public int getStars() {
+        return stars;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
     @Override
@@ -87,10 +87,10 @@ public class Shop {
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
                 ", location='" + location + '\'' +
-                ", startime='" + startime + '\'' +
+                ", starttime='" + starttime + '\'' +
                 ", endtime='" + endtime + '\'' +
-                ", star=" + star +
-                ", like=" + like +
+                ", likes=" + likes +
+                ", stars=" + stars +
                 '}';
     }
 }

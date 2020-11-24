@@ -98,13 +98,16 @@ public class UserController {
         jdbcTemplate.setDataSource(source);
         List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
         System.out.println(query.get(0));
-        //jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop1','img1.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        /*jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop2','img2.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop3','img3.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop4','img4.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop5','img5.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop6','img6.jpg','sjz','2020-11-1','2020-12-31',1,1)");*/
+        //jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop1','img1.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
+        /*
+        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop2','img2.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
+        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop3','img3.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
+        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop4','img4.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
+        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop5','img5.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
+        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop6','img6.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");*/
         //jdbcTemplate.update("delete from shop");
+
+        //
     }
 
 
