@@ -53,7 +53,7 @@ public class ShopController {
         return str;
     }
 
-    @RequestMapping("uploadImages")
+    /*@RequestMapping("uploadImages")
     @ResponseBody
     public void uploadImages(HttpServletResponse response) {
         try {
@@ -75,7 +75,7 @@ public class ShopController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @RequestMapping("receive")
     @ResponseBody
@@ -110,24 +110,24 @@ public class ShopController {
 
     @RequestMapping("findMyLikes")
     @ResponseBody
-    public String findMyLikes(){
+    public String findMyLikes(int user_id) {
+        //int user_id = Integer.parseInt(request.getParameter("user_id"));
         Gson gson = new Gson();
-        List<Shop> shops = shopService.myShopList(1);
+        List<Shop> shops = shopService.myShopList(user_id);
         System.out.println(shops);
         String str = gson.toJson(shops);
         return str;
     }
 
 
-    @RequestMapping("myRevice")
+    @RequestMapping("myReceive")
     @ResponseBody
-    public void myRevice(HttpServletRequest request, HttpServletResponse response){
-        String name = request.getParameter("image");
+    public void myRevice(String image, HttpServletResponse response){
         List<Shop> shops = shopService.myShopList(1);
         try {
             for (Shop shop : shops) {
 
-                if (name.equals(shop.getImage())) {
+                if (image.equals(shop.getImage())) {
                     //files.add(new File(shop.getImage()+""));
                     File file = new File("D:\\software-course\\project training\\ACupOfJava\\Project\\刘净圆\\自习室服务端\\yike\\webapp\\images\\" + shop.getImage());
                     System.out.println(file.getAbsolutePath());
