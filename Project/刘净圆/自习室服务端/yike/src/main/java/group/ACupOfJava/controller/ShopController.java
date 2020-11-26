@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -37,10 +38,24 @@ import java.util.List;
 @Controller
 @RequestMapping("/shop")
 public class ShopController {
+    
 
     @Autowired
     private ShopService shopService;
 
+
+    @RequestMapping("demo")
+    @ResponseBody
+    public void demoupload(MultipartFile upload) {
+        // 获取方法名
+        String originalFilename = upload.getOriginalFilename();
+        // 转存
+        try {
+            upload.transferTo(new File("D:\\software-course\\project training\\ACupOfJava\\Project\\刘净圆\\自习室服务端\\yike\\webapp\\images\\" + originalFilename));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @RequestMapping("find")
@@ -70,6 +85,7 @@ public class ShopController {
                 }
                 fis.close();
             }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -122,8 +138,8 @@ public class ShopController {
 
     @RequestMapping("myReceive")
     @ResponseBody
-    public void myRevice(String image, HttpServletResponse response){
-        List<Shop> shops = shopService.myShopList(1);
+    public void myRevice(String image, int user_id , HttpServletResponse response){
+        List<Shop> shops = shopService.myShopList(user_id);
         try {
             for (Shop shop : shops) {
 
@@ -136,7 +152,6 @@ public class ShopController {
                     int len = 0;
                     while ((len = fis.read()) != -1) {
                         os.write(len);
-
                     }
                     fis.close();
                     os.close();
