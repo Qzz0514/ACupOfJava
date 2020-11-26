@@ -7,20 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c0d7c8e-cb51-4296-9db3-874a68289ec2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/controller/RoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/dao/RoomDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/pojo/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/service/RoomService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/service/impl/RoomServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yike/src/main/resources/group/ACupOfJava/dao/RoomDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yike/webapp/file-upload.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/controller/SeatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/dao/SeatDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/pojo/Seat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/service/SeatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/service/impl/SeatServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/yike/src/main/java/group/ACupOfJava/controller/ShopController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yike/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yike/src/main/resources/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yike/target/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yike/target/classes/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yike/target/yike/WEB-INF/classes/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yike/target/yike/WEB-INF/classes/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yike/yike.iml" beforeDir="false" afterPath="$PROJECT_DIR$/yike/yike.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yike/src/main/resources/group/ACupOfJava/dao/RoomDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yike/src/main/resources/group/ACupOfJava/dao/RoomDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -378,7 +371,7 @@
       <workItem from="1606317044314" duration="85000" />
       <workItem from="1606317142105" duration="231000" />
       <workItem from="1606317390606" duration="708000" />
-      <workItem from="1606349854059" duration="909000" />
+      <workItem from="1606349854059" duration="1227000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1606012526823</created>
@@ -478,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606221253137</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add room mvc">
+      <created>1606350804403</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606350804403</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +490,8 @@
     <MESSAGE value="update shop info" />
     <MESSAGE value="update image upload" />
     <MESSAGE value="update myLikes info and images" />
-    <option name="LAST_COMMIT_MESSAGE" value="update myLikes info and images" />
+    <MESSAGE value="add room mvc" />
+    <option name="LAST_COMMIT_MESSAGE" value="add room mvc" />
   </component>
   <component name="WindowStateProjectService">
     <state x="386" y="113" key="#Project_Structure" timestamp="1606039764515">
@@ -545,10 +546,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="532" y="266" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1605664095517" />
-    <state x="468" y="133" key="CommitChangelistDialog2" timestamp="1606221249620">
+    <state x="468" y="133" key="CommitChangelistDialog2" timestamp="1606350800563">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="468" y="133" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1606221249620" />
+    <state x="468" y="133" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1606350800563" />
     <state x="200" y="156" key="FileChooserDialogImpl" timestamp="1606350093892">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -639,10 +640,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1605854699739" />
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1606221261072">
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1606350817594">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1606221261072" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1606350817594" />
     <state x="581" y="223" key="chooseDestDirectoryDialog" timestamp="1605869676472">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
