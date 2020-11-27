@@ -11,4 +11,6 @@ public interface UserService {
     public List<User> find();
     public User loginUser(Map<String,String> map);
 
+    public List<Shop> talkList(int user_id);
+
 }

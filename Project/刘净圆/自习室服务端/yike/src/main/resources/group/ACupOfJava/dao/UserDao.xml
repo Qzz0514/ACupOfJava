@@ -5,8 +5,9 @@
     <select id="find" resultType="user">
         select * from user
     </select>
-
-
+    <select id="talkList" resultType="group.ACupOfJava.pojo.Shop" parameterType="int">
+        SELECT shop.* from user,shop,talk where user.user_id = talk.user_id and shop.shop_id = talk.shop_id and user.user_id = #{id}
+    </select>
 
 
     <!--<select id="loginUser" parameterType="Map" resultType="User">

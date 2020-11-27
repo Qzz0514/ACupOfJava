@@ -1,6 +1,7 @@
 package group.ACupOfJava.service.impl;
 
 import group.ACupOfJava.dao.UserDao;
+import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User loginUser(Map<String,String> map) {
         return userDao.loginUser(map);
+    }
+
+    public List<Shop> talkList(int user_id){
+        return userDao.talkList(user_id);
     }
 }

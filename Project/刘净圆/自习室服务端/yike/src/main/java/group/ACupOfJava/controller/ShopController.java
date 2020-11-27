@@ -60,12 +60,8 @@ public class ShopController {
 
     @RequestMapping("find")
     @ResponseBody
-    public String find(HttpServletRequest request, HttpServletResponse response) {
-        Gson gson = new Gson();
-        List<Shop> shops = shopService.shopList();
-        System.out.println(shops);
-        String str = gson.toJson(shops);
-        return str;
+    public List<Shop> find(HttpServletRequest request, HttpServletResponse response) {
+        return shopService.shopList();
     }
     @RequestMapping("receive")
     @ResponseBody
@@ -100,13 +96,8 @@ public class ShopController {
 
     @RequestMapping("findMyLikes")
     @ResponseBody
-    public String findMyLikes(int user_id) {
-        //int user_id = Integer.parseInt(request.getParameter("user_id"));
-        Gson gson = new Gson();
-        List<Shop> shops = shopService.myShopList(user_id);
-        System.out.println(shops);
-        String str = gson.toJson(shops);
-        return str;
+    public List<Shop> findMyLikes(int user_id) {
+        return  shopService.myShopList(user_id);
     }
 
 
@@ -137,6 +128,11 @@ public class ShopController {
             e.printStackTrace();
         }
     }
+
+
+
+
+
 
 
 
