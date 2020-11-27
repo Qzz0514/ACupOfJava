@@ -15,6 +15,7 @@ import java.util.List;
  * @Date:2020/11/22 10:35
  */
 
+
 public interface ShopDao {
     @Select("select * from shop")
     public List<Shop> shopList();

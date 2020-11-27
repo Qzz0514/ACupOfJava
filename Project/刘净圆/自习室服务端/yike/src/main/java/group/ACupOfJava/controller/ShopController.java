@@ -67,32 +67,6 @@ public class ShopController {
         String str = gson.toJson(shops);
         return str;
     }
-
-    /*@RequestMapping("uploadImages")
-    @ResponseBody
-    public void uploadImages(HttpServletResponse response) {
-        try {
-            for (Shop shop :shopService.shopList()){
-                //files.add(new File(shop.getImage()+""));
-                File file = new File("D:\\software-course\\project training\\ACupOfJava\\Project\\刘净圆\\自习室服务端\\yike\\webapp\\images\\"+shop.getImage());
-                System.out.println(file.getAbsolutePath());
-                OutputStream os = response.getOutputStream();
-                FileInputStream fis = new FileInputStream(file);
-                int len = 0;
-                while ((len = fis.read())!=-1) {
-                    os.write(len);
-
-                }
-                fis.close();
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-
     @RequestMapping("receive")
     @ResponseBody
     public void receive(HttpServletRequest request, HttpServletResponse response) {
@@ -163,6 +137,8 @@ public class ShopController {
             e.printStackTrace();
         }
     }
+
+
 
 
 
