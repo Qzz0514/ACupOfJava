@@ -1,5 +1,4 @@
 package group.ACupOfJava.pojo;
-
 /**
  * ClassName:Shop
  * Packeage:group.ACupOfJava.pojo
