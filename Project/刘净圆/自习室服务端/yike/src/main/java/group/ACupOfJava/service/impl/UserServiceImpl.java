@@ -30,4 +30,11 @@ public class UserServiceImpl implements UserService {
     public List<Shop> talkList(int user_id){
         return userDao.talkList(user_id);
     }
+
+    @Override
+    public int addTalkRelation(Map<String, Integer> map) {
+        return userDao.addTalkRelation(map);
+    }
+
+
 }

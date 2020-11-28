@@ -13,4 +13,6 @@ public interface UserService {
 
     public List<Shop> talkList(int user_id);
 
+    public int addTalkRelation(Map<String,Integer> map);
+
 }

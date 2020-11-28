@@ -115,10 +115,24 @@ public class UserController {
         }
     }
 
+    @RequestMapping("addTalkRelation")
+    @ResponseBody
+    public void addTalkRelation(HttpServletRequest request) {
+
+        Integer user_id = Integer.parseInt(request.getParameter("user_id"));
+        Integer shop_id = Integer.parseInt(request.getParameter("shop_id"));
+        Map<String, Integer> map = new HashMap<>();
+        map.put("user_id", user_id);
+        map.put("shop_id", shop_id);
+        int row = userService.addTalkRelation(map);
+        System.out.println(row);
+    }
+
+
 
     @Test
-
     public void Test() throws PropertyVetoException {
+
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         ComboPooledDataSource source = new ComboPooledDataSource();
         source.setDriverClass("com.mysql.jdbc.Driver");

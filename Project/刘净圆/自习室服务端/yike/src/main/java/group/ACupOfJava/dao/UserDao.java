@@ -18,8 +18,12 @@ public interface UserDao {
     @Select("select * from user where email = #{email} and password = #{password}")
     public User loginUser(Map<String,String> map);
 
-
+    //与用户聊过天的商家列表
     public List<Shop> talkList(int user_id);
+
+    //创建聊天关系
+    public int addTalkRelation(Map<String,Integer> map);
+
 
 
 }

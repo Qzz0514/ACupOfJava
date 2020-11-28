@@ -13,7 +13,7 @@ public class Room {
     private int price;
     private int row;//行
     private int col;//列
-    private int totoal;//座位数=行*列
+    private int total;//座位数=行*列
 
     public int getRoom_id() {
         return room_id;
@@ -55,12 +55,12 @@ public class Room {
         this.col = col;
     }
 
-    public int getTotoal() {
-        return totoal;
+    public int getTotal() {
+        return total;
     }
 
-    public void setTotoal(int totoal) {
-        this.totoal = totoal;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Room {
                 ", price=" + price +
                 ", row=" + row +
                 ", col=" + col +
-                ", totoal=" + totoal +
+                ", total=" + total +
                 '}';
     }
 }
