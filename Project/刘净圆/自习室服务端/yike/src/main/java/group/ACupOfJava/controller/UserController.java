@@ -128,6 +128,12 @@ public class UserController {
         System.out.println(row);
     }
 
+    @RequestMapping("receiveMessage")
+    @ResponseBody
+    public void receiveMessage(){
+
+    }
+
 
 
     @Test

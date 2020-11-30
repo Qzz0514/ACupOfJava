@@ -24,6 +24,9 @@ public interface UserDao {
     //创建聊天关系
     public int addTalkRelation(Map<String,Integer> map);
 
+    //接收消息
+    public int receiveMessage(Map<String, Integer> map);
+
 
 
 }
