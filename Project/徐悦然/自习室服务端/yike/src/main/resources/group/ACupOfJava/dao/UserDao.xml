@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="group.ACupOfJava.dao.UserDao">
+
+    <select id="find" resultType="user">
+        select * from user
+    </select>
+
+    <select id="findById" parameterType="String" resultType="user">
+        select * from user where email = #{email}
+    </select>
+
+    <update id="addImgPath" parameterType="user">
+        update user set image = #{image} where email = #{email}
+    </update>
+
+
+    <select id="talkList" resultType="group.ACupOfJava.pojo.Shop" parameterType="int">
+        SELECT distinct shop.* from user,shop,talk where user.user_id = talk.user_id and shop.shop_id = talk.shop_id and user.user_id = #{id}
+    </select>
+
+    <insert id="addTalkRelation" parameterType="Map">
+        insert into talk values (#{user_id},#{shop_id})
+    </insert>
+
+
+</mapper>
