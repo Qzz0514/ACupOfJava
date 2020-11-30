@@ -13,4 +13,5 @@ import java.util.List;
 public interface ShopService {
     public List<Shop> shopList();
     public List<Shop> myShopList(int id);
+    public Shop shopDetail(int shop_id);
 }

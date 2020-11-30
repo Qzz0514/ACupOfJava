@@ -26,4 +26,10 @@ public class ShopSerivceImpl implements ShopService {
     public List<Shop> myShopList(int id) {
         return shopDao.myShopList(id);
     }
+
+    @Override
+    public Shop shopDetail(int shop_id) {
+        return shopDao.shopDetail(shop_id);
+    }
+
 }

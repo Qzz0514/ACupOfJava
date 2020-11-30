@@ -104,6 +104,17 @@ public class ShopController {
         }
     }
 
+    //商店详情页面
+    @RequestMapping("shopDetail")
+    @ResponseBody
+    public Shop shopDetail(@RequestParam(value = "shop_id") int shopId) {
+        return shopService.shopDetail(shopId);
+    }
+
+
+
+
+
 
 
 }
