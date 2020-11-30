@@ -6,7 +6,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0d7c8e-cb51-4296-9db3-874a68289ec2" name="Default Changelist" comment="" />
+    <list default="true" id="1c0d7c8e-cb51-4296-9db3-874a68289ec2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../刘净圆/自习室服务端/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../刘净圆/自习室服务端/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/src/main/java/group/ACupOfJava/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/src/main/java/group/ACupOfJava/controller/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/classes/group/ACupOfJava/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/classes/group/ACupOfJava/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/classes/group/ACupOfJava/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/classes/group/ACupOfJava/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/yike/WEB-INF/classes/group/ACupOfJava/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/yike/WEB-INF/classes/group/ACupOfJava/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/yike/WEB-INF/classes/group/ACupOfJava/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../刘净圆/自习室服务端/yike/target/yike/WEB-INF/classes/group/ACupOfJava/dao/UserDao.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +49,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -63,6 +73,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1kRKfMyEjWMCNrrfoFW2IE3JrzU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -70,6 +81,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
@@ -81,11 +93,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -111,7 +123,7 @@
       <command value=" " />
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 8.0.0">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.30">
     <configuration name="UserController.Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="yike" />
       <extension name="coverage">
@@ -144,8 +156,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 8.0.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="UPDATING_POLICY" value="restart-server" />
+    <configuration name="Tomcat 9.0.30" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.30" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
         <artifact name="yike:war exploded">
           <settings>
@@ -219,7 +233,7 @@
     <list>
       <item itemvalue="JUnit.UserController.Test" />
       <item itemvalue="JUnit.UserController.test" />
-      <item itemvalue="Tomcat Server.Tomcat 8.0.0" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.30" />
     </list>
     <recent_temporary>
       <list>
@@ -238,11 +252,6 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -273,6 +282,7 @@
       <workItem from="1606699162775" duration="2000" />
       <workItem from="1606699179640" duration="3391000" />
       <workItem from="1606702778646" duration="4615000" />
+      <workItem from="1606708485915" duration="16000" />
     </task>
     <servers />
   </component>
@@ -288,10 +298,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="309" y="86" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606464768980" />
-    <state x="339" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606464774156">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="424" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606708501143">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="339" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606464774156" />
+    <state x="424" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606708501143" />
     <state x="497" y="239" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605745470438">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -300,6 +311,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="162" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1606699712905" />
+    <state x="806" y="429" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606708505661">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="806" y="429" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606708505661" />
     <state x="314" y="486" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath" timestamp="1606006549864">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -388,10 +403,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1105" height="199" key="GridCell.Tab.7.right/0.0.1536.824@0.0.1536.824" timestamp="1606004828342" />
-    <state x="314" y="0" key="SettingsEditor" timestamp="1606465901749">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="393" y="0" key="SettingsEditor" timestamp="1606708531986">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="314" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606465901749" />
+    <state x="393" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1606708531986" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1605854699739">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

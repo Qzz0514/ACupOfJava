@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/room")
 public class RoomController {
+
     @Autowired
     private RoomService roomService;
+
+
 
 }
