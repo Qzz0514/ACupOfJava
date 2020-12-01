@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="group.ACupOfJava.dao.RoomDao">
+
+
+
+    <!--<select id="loginUser" parameterType="Map" resultType="User">
+        select * from user where email = #{email} and password = #{password}
+    </select>-->
+
+
+    <select id="roomList" resultType="group.ACupOfJava.pojo.Room" parameterType="int">
+         SELECT room.* FROM shop,room,room_occupation where shop.shop_id = room_occupation.shop_id and room.room_id = room_occupation.room_id and shop.shop_id = #{shop_id}
+
+    </select>
+</mapper>
