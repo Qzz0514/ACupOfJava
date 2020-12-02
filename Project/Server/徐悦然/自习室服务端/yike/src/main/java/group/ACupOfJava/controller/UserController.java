@@ -160,6 +160,7 @@ public class UserController {
         return null;
     }
 
+    //建立聊天关系
     @RequestMapping("addTalkRelation")
     @ResponseBody
     public void addTalkRelation(@RequestParam("user_id") int userId, @RequestParam("shop_id") int shopId) {
@@ -170,11 +171,8 @@ public class UserController {
         System.out.println(row);
     }
 
-    @RequestMapping("receiveMessage")
-    @ResponseBody
-    public void receiveMessage(){
 
-    }
+
 
 
 }

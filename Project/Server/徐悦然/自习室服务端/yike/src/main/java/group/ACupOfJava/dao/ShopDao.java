@@ -18,7 +18,7 @@ public interface ShopDao {
     @Select("select * from shop")
     public List<Shop> shopList();
 
-    @Select("SELECT shop.* from user,shop,collection where user.user_id = collection.user_id and shop.shop_id = collection.shop_id and user.user_id = #{id}")
+    @Select("SELECT distinct shop.* from user,shop,collection where user.user_id = collection.user_id and shop.shop_id = collection.shop_id and user.user_id = #{id}")
     public List<Shop> myShopList(int id);
 
     public Shop shopDetail(int shop_id);
@@ -28,6 +28,8 @@ public interface ShopDao {
     public int updateStars(Map<String, Integer> map);
 
     public List<Shop> hotList();
+
+    public List<Shop> talkList(int id);
 
 
 

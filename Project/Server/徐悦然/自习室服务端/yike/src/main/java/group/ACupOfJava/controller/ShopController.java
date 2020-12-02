@@ -168,6 +168,7 @@ public class ShopController {
         shopService.updateStars(map);
 
     }
+
     //实现热门：
     //(2)根据收藏量从大到小排序
     @RequestMapping("hot")
@@ -175,6 +176,43 @@ public class ShopController {
     public List<Shop> hot(){
         return shopService.hotList();
     }
+
+
+    //与用户建立聊天关系的商家列表
+    @RequestMapping("talkList")
+    @ResponseBody
+    public List<Shop> talkList(@RequestParam("user_id") int userId){
+        return shopService.talkList(userId);
+    }
+
+    @RequestMapping("talkImage")
+    @ResponseBody
+    public void talkImage(String image, int user_id, HttpServletResponse response, HttpSession session) {
+        List<Shop> shops = shopService.talkList(user_id);
+        try {
+            for (Shop shop : shops) {
+
+                if (image.equals(shop.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+                    System.out.println(file.getAbsolutePath());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
 

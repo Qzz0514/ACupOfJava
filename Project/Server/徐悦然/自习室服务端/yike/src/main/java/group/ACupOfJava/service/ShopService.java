@@ -18,6 +18,7 @@ public interface ShopService {
     public int addCollection(Map<String,Integer> map);
     public int updateStars(Map<String, Integer> map);
     public List<Shop> hotList();
+    public List<Shop> talkList(int id);
     
 
 }
