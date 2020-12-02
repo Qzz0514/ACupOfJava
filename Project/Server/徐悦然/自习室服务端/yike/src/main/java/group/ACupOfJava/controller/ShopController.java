@@ -32,7 +32,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/shop")
 public class ShopController {
-    
 
     @Autowired
     private ShopService shopService;
@@ -45,7 +44,6 @@ public class ShopController {
     }
 
 
-    
 
     @RequestMapping("receive")
     @ResponseBody
