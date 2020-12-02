@@ -44,19 +44,18 @@ public class ShopController {
     }
 
 
-
     @RequestMapping("receive")
     @ResponseBody
     public void receive(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
         List<Shop> shops = shopService.shopList();
         try {
-            for (Shop shop :shopService.shopList()){
+            for (Shop shop : shopService.shopList()) {
                 if (name.equals(shop.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/images/")+shop.getImage());
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
                     int len = 0;
-                    while ((len = fis.read())!=-1) {
+                    while ((len = fis.read()) != -1) {
                         os.write(len);
                     }
                     fis.close();
@@ -75,16 +74,16 @@ public class ShopController {
     @RequestMapping("findMyLikes")
     @ResponseBody
     public List<Shop> findMyLikes(@RequestParam(value = "user_id", required = false) int userId) {
-        for (Shop shop:shopService.myShopList(userId)) {
+        for (Shop shop : shopService.myShopList(userId)) {
             System.out.println(shop.getShopId());
         }
-        return  shopService.myShopList(userId);
+        return shopService.myShopList(userId);
     }
 
 
     @RequestMapping("myReceive")
     @ResponseBody
-    public void myRevice(String image, int user_id, HttpServletResponse response, HttpSession session){
+    public void myRevice(String image, int user_id, HttpServletResponse response, HttpSession session) {
         List<Shop> shops = shopService.myShopList(user_id);
         try {
             for (Shop shop : shops) {
@@ -121,13 +120,13 @@ public class ShopController {
     public void shopDetailImage(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
         List<Shop> shops = shopService.shopList();
         try {
-            for (Shop shop :shopService.shopList()){
+            for (Shop shop : shopService.shopList()) {
                 if (name.equals(shop.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/images/")+shop.getImage());
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
                     int len = 0;
-                    while ((len = fis.read())!=-1) {
+                    while ((len = fis.read()) != -1) {
                         os.write(len);
                     }
                     fis.close();
@@ -146,26 +145,36 @@ public class ShopController {
     //加入收藏
     @RequestMapping("addCollection")
     @ResponseBody
-    public void addCollection(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId){
+    public void addCollection(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId) {
         Map<String, Integer> map = new HashMap<>();
         map.put("user_id", userId);
         map.put("shop_id", shopId);
         int row = shopService.addCollection(map);
+
         System.out.println(row);
 
 
     }
 
+    //实现热门:
+    // （1）更新收藏
 
+    @RequestMapping("updateStars")
+    @ResponseBody
+    public void updateStars(@RequestParam("shop_id") int shopId, @RequestParam("newStars") int newStars) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("shop_id", shopId);
+        map.put("newStars", newStars);
+        shopService.updateStars(map);
 
-
-
-
-
-
-
-
-
+    }
+    //实现热门：
+    //(2)根据收藏量从大到小排序
+    @RequestMapping("hot")
+    @ResponseBody
+    public List<Shop> hot(){
+        return shopService.hotList();
+    }
 
 }
 

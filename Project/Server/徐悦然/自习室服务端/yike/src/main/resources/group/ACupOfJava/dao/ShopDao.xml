@@ -5,9 +5,15 @@
     <insert id="addCollection" parameterType="int">
         insert into collection values (#{user_id},#{shop_id})
     </insert>
+    <update id="updateStars" parameterType="int">
+        update shop set stars = #{newStars} where shop_id = #{shop_id}
+    </update>
 
     <select id="shopDetail" resultType="group.ACupOfJava.pojo.Shop" parameterType="int">
         select * from shop where shop_id = #{shop_id}
+    </select>
+    <select id="hotList" resultType="group.ACupOfJava.pojo.Shop">
+        select * from shop order by stars desc
     </select>
 
 </mapper>

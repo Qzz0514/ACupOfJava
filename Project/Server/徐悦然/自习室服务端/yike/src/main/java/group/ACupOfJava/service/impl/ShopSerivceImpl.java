@@ -38,4 +38,14 @@ public class ShopSerivceImpl implements ShopService {
         return shopDao.addCollection(map);
     }
 
+    public int updateStars(Map<String, Integer> map) {
+        return shopDao.updateStars(map);
+    }
+
+    @Override
+    public List<Shop> hotList() {
+        return shopDao.hotList();
+    }
+
+
 }

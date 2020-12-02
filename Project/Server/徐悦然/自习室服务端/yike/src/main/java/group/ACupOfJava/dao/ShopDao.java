@@ -25,5 +25,10 @@ public interface ShopDao {
 
     public int addCollection(Map<String,Integer> map);
 
+    public int updateStars(Map<String, Integer> map);
+
+    public List<Shop> hotList();
+
+
 
 }
