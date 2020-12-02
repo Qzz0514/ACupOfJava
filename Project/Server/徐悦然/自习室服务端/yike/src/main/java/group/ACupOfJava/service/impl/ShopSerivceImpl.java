@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * ClassName:ShopSerivceImpl
@@ -30,6 +31,11 @@ public class ShopSerivceImpl implements ShopService {
     @Override
     public Shop shopDetail(int shop_id) {
         return shopDao.shopDetail(shop_id);
+    }
+
+    @Override
+    public int addCollection(Map<String, Integer> map) {
+        return shopDao.addCollection(map);
     }
 
 }

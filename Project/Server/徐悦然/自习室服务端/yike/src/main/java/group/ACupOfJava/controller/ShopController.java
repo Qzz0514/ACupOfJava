@@ -5,6 +5,7 @@ import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.service.ShopService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.beans.PropertyVetoException;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ClassName:ShopController
@@ -42,6 +45,7 @@ public class ShopController {
     }
 
 
+    
 
     @RequestMapping("receive")
     @ResponseBody
@@ -73,6 +77,9 @@ public class ShopController {
     @RequestMapping("findMyLikes")
     @ResponseBody
     public List<Shop> findMyLikes(@RequestParam(value = "user_id", required = false) int userId) {
+        for (Shop shop:shopService.myShopList(userId)) {
+            System.out.println(shop.getShopId());
+        }
         return  shopService.myShopList(userId);
     }
 
@@ -110,6 +117,51 @@ public class ShopController {
     public Shop shopDetail(@RequestParam(value = "shop_id") int shopId) {
         return shopService.shopDetail(shopId);
     }
+
+    @RequestMapping("shopDetailImage")
+    @ResponseBody
+    public void shopDetailImage(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
+        List<Shop> shops = shopService.shopList();
+        try {
+            for (Shop shop :shopService.shopList()){
+                if (name.equals(shop.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/images/")+shop.getImage());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read())!=-1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+
+                }
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //加入收藏
+    @RequestMapping("addCollection")
+    @ResponseBody
+    public void addCollection(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId){
+        Map<String, Integer> map = new HashMap<>();
+        map.put("user_id", userId);
+        map.put("shop_id", shopId);
+        int row = shopService.addCollection(map);
+        System.out.println(row);
+
+
+    }
+
+
+
+
+
 
 
 

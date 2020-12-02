@@ -6,7 +6,7 @@ package group.ACupOfJava.pojo;
  * @Date:2020/11/22 10:42
  */
 public class Shop {
-    private int id;
+    private int shopId;
     private String name;
     private String image;
     private String location;
@@ -15,12 +15,12 @@ public class Shop {
     private int likes;
     private int stars;
 
-    public int getId() {
-        return id;
+    public int getShopId() {
+        return shopId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 
     public String getName() {
@@ -82,7 +82,7 @@ public class Shop {
     @Override
     public String toString() {
         return "Shop{" +
-                "id=" + id +
+                "shopId=" + shopId +
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
                 ", location='" + location + '\'' +

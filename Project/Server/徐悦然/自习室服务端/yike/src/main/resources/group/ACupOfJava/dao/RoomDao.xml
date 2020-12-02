@@ -9,7 +9,7 @@
     </select>-->
 
 
-    <select id="roomList" resultType="group.ACupOfJava.pojo.Room" parameterType="int">
+    <select id="roomList" resultType="room" parameterType="int">
          SELECT room.* FROM shop,room,room_occupation where shop.shop_id = room_occupation.shop_id and room.room_id = room_occupation.room_id and shop.shop_id = #{shop_id}
 
     </select>

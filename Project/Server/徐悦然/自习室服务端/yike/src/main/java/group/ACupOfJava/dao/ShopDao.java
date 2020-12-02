@@ -4,6 +4,7 @@ import group.ACupOfJava.pojo.Shop;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * ClassName:ShopDao
@@ -21,6 +22,8 @@ public interface ShopDao {
     public List<Shop> myShopList(int id);
 
     public Shop shopDetail(int shop_id);
+
+    public int addCollection(Map<String,Integer> map);
 
 
 }
