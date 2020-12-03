@@ -4,6 +4,7 @@ import group.ACupOfJava.pojo.Shop;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * ClassName:ShopService
@@ -17,8 +18,10 @@ public interface ShopService {
     public Shop shopDetail(int shop_id);
     public int addCollection(Map<String,Integer> map);
     public int updateStars(Map<String, Integer> map);
+    public int addLikes(Map<String,Integer> map);
+    public int updateLikes(Map<String, Integer> map);
     public List<Shop> hotList();
-    public List<Shop> talkList(int id);
+    public List<Shop> talkList(List<String> list);
     
 
 }

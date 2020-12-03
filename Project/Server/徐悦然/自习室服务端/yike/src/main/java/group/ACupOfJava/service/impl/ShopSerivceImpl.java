@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * ClassName:ShopSerivceImpl
@@ -43,13 +44,23 @@ public class ShopSerivceImpl implements ShopService {
     }
 
     @Override
+    public int addLikes(Map<String, Integer> map) {
+        return shopDao.addLikes(map);
+    }
+
+    @Override
+    public int updateLikes(Map<String, Integer> map) {
+        return shopDao.updateLikes(map);
+    }
+
+    @Override
     public List<Shop> hotList() {
         return shopDao.hotList();
     }
 
     @Override
-    public List<Shop> talkList(int id) {
-        return shopDao.talkList(id);
+    public List<Shop> talkList(List<String> list) {
+        return shopDao.talkList(list);
     }
 
 

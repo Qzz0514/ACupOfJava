@@ -3,6 +3,7 @@ package group.ACupOfJava.controller;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.service.ShopService;
+import group.ACupOfJava.util.JedisUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,15 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.beans.PropertyVetoException;
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * ClassName:ShopController
@@ -157,7 +157,7 @@ public class ShopController {
     }
 
     //实现热门:
-    // （1）更新收藏
+    // （1）更新Stars
 
     @RequestMapping("updateStars")
     @ResponseBody
@@ -170,7 +170,7 @@ public class ShopController {
     }
 
     //实现热门：
-    //(2)根据收藏量从大到小排序
+    //(2)根据Stars从大到小排序
     @RequestMapping("hot")
     @ResponseBody
     public List<Shop> hot(){
@@ -178,17 +178,39 @@ public class ShopController {
     }
 
 
+    //实现近期
+    //更新Likes
+    @RequestMapping("updateLikes")
+    @ResponseBody
+    public void updateLikes(@RequestParam("shop_id") int shopId, @RequestParam("newLikes") int newStars) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("shop_id", shopId);
+        map.put("newLikes", newStars);
+        shopService.updateLikes(map);
+
+    }
+
+    //实现近期
+    //更新Likes
+
+
     //与用户建立聊天关系的商家列表
     @RequestMapping("talkList")
     @ResponseBody
     public List<Shop> talkList(@RequestParam("user_id") int userId){
-        return shopService.talkList(userId);
+        Jedis jedis = JedisUtil.geyJedis();
+        Set<String> friends = jedis.smembers("friends_" + userId);
+        List<String> list = new ArrayList<>(friends);
+        return shopService.talkList(list);
     }
 
     @RequestMapping("talkImage")
     @ResponseBody
     public void talkImage(String image, int user_id, HttpServletResponse response, HttpSession session) {
-        List<Shop> shops = shopService.talkList(user_id);
+        Jedis jedis = JedisUtil.geyJedis();
+        Set<String> friends = jedis.smembers("friends_" + user_id);
+        List<String> list = new ArrayList<>(friends);
+        List<Shop> shops = shopService.talkList(list);
         try {
             for (Shop shop : shops) {
 
@@ -211,9 +233,6 @@ public class ShopController {
             e.printStackTrace();
         }
     }
-
-
-
 }
 
 
