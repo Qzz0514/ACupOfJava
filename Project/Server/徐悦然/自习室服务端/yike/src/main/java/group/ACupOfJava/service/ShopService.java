@@ -22,6 +22,8 @@ public interface ShopService {
     public int updateLikes(Map<String, Integer> map);
     public List<Shop> hotList();
     public List<Shop> talkList(List<String> list);
-    
+    public List<Shop> recentList(int id);
+
+
 
 }

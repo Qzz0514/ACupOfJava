@@ -71,6 +71,20 @@ public class ShopController {
         }
     }
 
+    //(1)加入收藏
+    @RequestMapping("addCollection")
+    @ResponseBody
+    public void addCollection(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("user_id", userId);
+        map.put("shop_id", shopId);
+        int row = shopService.addCollection(map);
+
+        System.out.println(row);
+
+
+    }
+    //收藏列表
     @RequestMapping("findMyLikes")
     @ResponseBody
     public List<Shop> findMyLikes(@RequestParam(value = "user_id", required = false) int userId) {
@@ -80,7 +94,7 @@ public class ShopController {
         return shopService.myShopList(userId);
     }
 
-
+    //收藏列表图片
     @RequestMapping("myReceive")
     @ResponseBody
     public void myRevice(String image, int user_id, HttpServletResponse response, HttpSession session) {
@@ -142,22 +156,12 @@ public class ShopController {
         }
     }
 
-    //加入收藏
-    @RequestMapping("addCollection")
-    @ResponseBody
-    public void addCollection(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId) {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("user_id", userId);
-        map.put("shop_id", shopId);
-        int row = shopService.addCollection(map);
 
-        System.out.println(row);
-
-
-    }
 
     //实现热门:
-    // （1）更新Stars
+
+    //实现热门：
+    //（1）更新Stars
 
     @RequestMapping("updateStars")
     @ResponseBody
@@ -179,7 +183,19 @@ public class ShopController {
 
 
     //实现近期
-    //更新Likes
+    //(1)加入预约
+    @RequestMapping("addAppointment")
+    @ResponseBody
+    public void addLikes(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("user_id", userId);
+        map.put("shop_id", shopId);
+        int row = shopService.addLikes(map);
+        System.out.println(row);
+    }
+
+    //实现近期
+    //(2)更新Likes
     @RequestMapping("updateLikes")
     @ResponseBody
     public void updateLikes(@RequestParam("shop_id") int shopId, @RequestParam("newLikes") int newStars) {
@@ -187,11 +203,49 @@ public class ShopController {
         map.put("shop_id", shopId);
         map.put("newLikes", newStars);
         shopService.updateLikes(map);
-
     }
 
-    //实现近期
-    //更新Likes
+
+    //(3)预约列表
+    @RequestMapping("recentList")
+    @ResponseBody
+    public List<Shop> recentList(@RequestParam(value = "user_id", required = false) int userId) {
+        return shopService.recentList(userId);
+    }
+    //(4)预约列表图片
+
+    //收藏列表图片
+    @RequestMapping("recentImage")
+    @ResponseBody
+    public void recentImage(String image, int user_id, HttpServletResponse response, HttpSession session) {
+        List<Shop> shops = shopService.recentList(user_id);
+        try {
+            for (Shop shop : shops) {
+
+                if (image.equals(shop.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+                    System.out.println(file.getAbsolutePath());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
 
 
     //与用户建立聊天关系的商家列表

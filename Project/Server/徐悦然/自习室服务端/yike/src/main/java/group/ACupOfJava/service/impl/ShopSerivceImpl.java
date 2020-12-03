@@ -63,5 +63,10 @@ public class ShopSerivceImpl implements ShopService {
         return shopDao.talkList(list);
     }
 
+    @Override
+    public List<Shop> recentList(int id) {
+        return shopDao.recentList(id);
+    }
+
 
 }
