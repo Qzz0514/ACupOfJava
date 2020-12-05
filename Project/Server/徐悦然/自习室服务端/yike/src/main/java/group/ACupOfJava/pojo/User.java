@@ -11,6 +11,7 @@ public class User {
     private String image;
     private String introduce;
 
+
     public int getUserId() {
         return userId;
     }

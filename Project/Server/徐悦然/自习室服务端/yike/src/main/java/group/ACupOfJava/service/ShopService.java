@@ -23,7 +23,7 @@ public interface ShopService {
     public List<Shop> hotList();
     public List<Shop> talkList(List<String> list);
     public List<Shop> recentList(int id);
-
+    public int bannerImages(int shop_id);
 
 
 }

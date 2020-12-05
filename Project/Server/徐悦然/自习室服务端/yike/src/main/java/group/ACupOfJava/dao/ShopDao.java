@@ -3,6 +3,7 @@ package group.ACupOfJava.dao;
 import group.ACupOfJava.pojo.Shop;
 import org.apache.ibatis.annotations.Select;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,6 +39,8 @@ public interface ShopDao {
 
 
     public List<Shop> talkList(List<String> list);
+
+    public int bannerImages(int shop_id);
 
 
 

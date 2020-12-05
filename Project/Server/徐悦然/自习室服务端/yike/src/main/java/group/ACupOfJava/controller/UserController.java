@@ -200,6 +200,36 @@ public class UserController {
     }
 
 
+    //上传用户头像
+    @RequestMapping("uploadUserImage")
+    @ResponseBody
+    public void uploadUserImage(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
+        try {
+            for (User user:userService.find()) {
+                if (name.equals(user.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/users/") + user.getImage());
+                    System.out.println(file.toString());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
 
 
 

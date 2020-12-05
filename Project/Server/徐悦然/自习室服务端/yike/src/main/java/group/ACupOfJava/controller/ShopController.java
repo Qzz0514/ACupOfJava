@@ -242,8 +242,6 @@ public class ShopController {
 
 
 
-
-
     //与用户建立聊天关系的商家列表
     @RequestMapping("talkList")
     @ResponseBody
@@ -281,6 +279,17 @@ public class ShopController {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+
+    //展示上商店详情轮播图
+    @RequestMapping("bannerImages")
+    @ResponseBody
+    public void bannerImages(@RequestParam(value = "shop_id") int shopId) {
+        int count = shopService.bannerImages(shopId);
+        for (int i = 0; i <count ; i++) {
+
         }
     }
 }

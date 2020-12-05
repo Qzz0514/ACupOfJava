@@ -69,4 +69,11 @@ public class ShopSerivceImpl implements ShopService {
     }
 
 
+    @Override
+    public int bannerImages(int shop_id) {
+        return shopDao.bannerImages(shop_id);
+    }
+
+
+
 }
