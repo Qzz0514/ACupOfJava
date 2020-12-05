@@ -8,19 +8,19 @@ package group.ACupOfJava.pojo;
  */
 
 public class Room {
-    private int room_id;
+    private int roomId;
     private String name;
     private int price;
     private int row;//行
     private int col;//列
     private int total;//座位数=行*列
 
-    public int getRoom_id() {
-        return room_id;
+    public int getRoomId() {
+        return roomId;
     }
 
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     public String getName() {
@@ -66,7 +66,7 @@ public class Room {
     @Override
     public String toString() {
         return "Room{" +
-                "room_id=" + room_id +
+                "roomId=" + roomId +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", row=" + row +

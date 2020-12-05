@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="group.ACupOfJava.dao.SeatDao">
-
+    <insert id="takeSeats" parameterType="list">
+        insert into seat_occupation values
+        <foreach collection="list" item="seat" separator=",">
+            (#{seat.room_id}, #{seat.user_id}, #{seat.id})
+        </foreach>
+    </insert>
 
 </mapper>
