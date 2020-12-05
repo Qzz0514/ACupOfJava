@@ -182,6 +182,13 @@
       <version>2.9.0</version>
     </dependency>
 
+    <!-- 邮箱验证   -->
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+
 
 
   </dependencies>

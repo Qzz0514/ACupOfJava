@@ -1,103 +1,115 @@
 package group.ACupOfJava.controller;
+
+import com.google.gson.Gson;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.UserService;
-import group.ACupOfJava.service.impl.UserServiceImpl;
 import group.ACupOfJava.util.StringUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.misc.ASCIICaseInsensitiveComparator;
-import javax.servlet.http.HttpServlet;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.beans.PropertyVetoException;
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 
+
     @Autowired
     private UserService userService;
 
+
     @RequestMapping("find")
     @ResponseBody
-    public String find() {
-        System.out.println(userService.find());
-        Map<String, String> map = new HashMap<>();
-        map.put("email", "1233456");
-        map.put("password", "123");
-        User user = userService.loginUser(map);
-        System.out.println(user);
-        return "ok";
+    public List<User> find() {
+        return userService.find();
     }
+
+
+    @RequestMapping(value = "updateHead", method = RequestMethod.POST)
+    @ResponseBody
+    public int updateHead(String email, MultipartFile file, HttpServletRequest request) {
+        String filePath = userService.findById(email).getImage();
+        // 如果没有图片路径赋予一个
+        if (filePath == null) {
+            // 获取后缀名
+            String suffixName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            filePath = System.currentTimeMillis() + suffixName;
+            User user = new User();
+            user.setEmail(email);
+            user.setImage(filePath);
+            userService.addImgPath(user);
+        }
+        // 保存
+        try {
+            file.transferTo(new File(request.getSession().getServletContext().getRealPath("/headers/") + filePath));
+            return 1;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+
+
 
     //登录验证
     @RequestMapping("login")
     @ResponseBody
-    public void login(HttpServletRequest request, HttpServletResponse response) {
-
+    public String login(String email, String password) {
         try {
-            request.setCharacterEncoding("utf-8");
-            HttpSession session = request.getSession();
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            request.setAttribute("email", email);
-            request.setAttribute("password", password);
-            if (StringUtil.isEmpty(email) || StringUtil.isEmpty(password)) {
-                request.setAttribute("error", "账户或密码为空");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+            Map<String, String> map = new HashMap<>();
+            map.put("email",email);
+            map.put("password",password);
+            User currentuser = userService.loginUser(map);
 
-            } else {
-                Map<String, String> map = new HashMap<>();
-                map.put("email", email);
-                map.put("password", password);
-                User currentuser = userService.loginUser(map);
-                if (currentuser == null) {
-                    request.setAttribute("error", "用户名或密码错误");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                } else {
-                    session.setAttribute("currentUser", currentuser);
-                    response.sendRedirect("xxx");
-
-                }
+            if (StringUtil.isEmpty(email) || StringUtil.isEmpty(password) || currentuser == null) {
+                System.out.println("登陆失败");
+                return "login failed";
+            }else{
+                System.out.println("登陆成功");
+                Gson gson = new Gson();
+                String userJson = gson.toJson(currentuser);
+                return userJson+"";
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     @RequestMapping("talk")
     @ResponseBody
-    public List<Shop> talkList(HttpServletRequest request) {
-        int  user_id = Integer.parseInt(request.getParameter("user_id"));
-        return userService.talkList(user_id);
+    public List<Shop> talkList(@RequestParam("user_id") int userId) {
+        return userService.talkList(userId);
     }
 
     @RequestMapping("talkReceive")
     @ResponseBody
-    public void myRevice(String image, int user_id , HttpServletResponse response){
-        List<Shop> shops = userService.talkList(user_id);
+    public void myRevice(String image, @RequestParam("user_id") int userId, HttpServletResponse response, HttpSession session){
+        List<Shop> shops = userService.talkList(userId);
         try {
             for (Shop shop : shops) {
 
                 if (image.equals(shop.getImage())) {
-                    //files.add(new File(shop.getImage()+""));
-                    File file = new File("D:\\software-course\\project training\\ACupOfJava\\Project\\刘净圆\\自习室服务端\\yike\\webapp\\images\\" + shop.getImage());
-                    System.out.println(file.getAbsolutePath());
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
                     int len = 0;
@@ -115,59 +127,52 @@ public class UserController {
         }
     }
 
+    //用户注册
+    @RequestMapping("register")
+    @ResponseBody
+    public String register(String name, String email, String password){
+        try {
+
+            if (StringUtil.isEmpty(email) || StringUtil.isEmpty(password) ||StringUtil.isEmpty(name)) {
+                return "error";
+            }
+            else {
+                List<User> users = userService.find();
+                List<String> emails = new ArrayList<>();
+                for (User user: users) {
+                    emails.add(user.getEmail());
+                }
+                if (!emails.contains(email)){
+                    Map<String,String> map = new HashMap<>();
+                    map.put("name",name);
+                    map.put("email",email);
+                    map.put("password",password);
+                    User addUser = userService.addUser(map);
+//                    System.out.println(addUser);
+                    return "register success";
+                }else {
+                    return "this mail has been registerd!";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //建立聊天关系
     @RequestMapping("addTalkRelation")
     @ResponseBody
-    public void addTalkRelation(HttpServletRequest request) {
-
-        Integer user_id = Integer.parseInt(request.getParameter("user_id"));
-        Integer shop_id = Integer.parseInt(request.getParameter("shop_id"));
+    public void addTalkRelation(@RequestParam("user_id") int userId, @RequestParam("shop_id") int shopId) {
         Map<String, Integer> map = new HashMap<>();
-        map.put("user_id", user_id);
-        map.put("shop_id", shop_id);
+        map.put("user_id", userId);
+        map.put("shop_id", shopId);
         int row = userService.addTalkRelation(map);
         System.out.println(row);
     }
 
-    @RequestMapping("receiveMessage")
-    @ResponseBody
-    public void receiveMessage(){
-
-    }
 
 
-
-    @Test
-    public void Test() throws PropertyVetoException {
-
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        ComboPooledDataSource source = new ComboPooledDataSource();
-        source.setDriverClass("com.mysql.jdbc.Driver");
-        /*source.setJdbcUrl("jdbc:mysql://123.57.63.212:3306/yike");
-        source.setUser("root");
-        source.setPassword("0814Xyr2000@me");*/
-        source.setJdbcUrl("jdbc:mysql://localhost:3306/yike");
-        source.setUser("root");
-        source.setPassword("");
-        jdbcTemplate.setDataSource(source);
-        List<User> query = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
-        System.out.println(query.get(0));
-        //jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop1','img1.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
-        /*
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop2','img2.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop3','img3.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop4','img4.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop5','img5.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop6','img6.jpg','sjz','2020-11-1 00:00','2020-12-31 00:00',1,1)");*/
-        //jdbcTemplate.update("delete from shop");
-
-        //
-    }
-
-
-    @Test
-    public void test2() {
-
-    }
 
 
 }

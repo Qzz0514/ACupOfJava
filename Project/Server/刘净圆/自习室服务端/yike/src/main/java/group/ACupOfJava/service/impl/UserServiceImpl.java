@@ -7,7 +7,6 @@ import group.ACupOfJava.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +22,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findById(String email) {
+        return userDao.findById(email);
+    }
+
+    @Override
+    public void addImgPath(User user) {
+        userDao.addImgPath(user);
+    }
+
+    @Override
+    public int getCurrentUserId(String email){return userDao.getCurrentUserId(email);}
+
+    @Override
     public User loginUser(Map<String,String> map) {
         return userDao.loginUser(map);
     }
@@ -36,5 +48,11 @@ public class UserServiceImpl implements UserService {
         return userDao.addTalkRelation(map);
     }
 
+
+    public User addUser(Map<String,String> map){
+        return userDao.addUser(map);
+    }
+
+    public User getUserInfo(String email){return userDao.getUserInfo(email);}
 
 }

@@ -2,17 +2,21 @@ package group.ACupOfJava.pojo;
 
 
 public class User {
-    private int id;
+    private int userId;
     private String name;
     private String password;
     private String email;
+    private boolean sex;
+    private String birthday;
+    private String image;
+    private String introduce;
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -39,13 +43,49 @@ public class User {
         this.email = email;
     }
 
+    public boolean isSex() {
+        return sex;
+    }
+
+    public void setSex(boolean sex) {
+        this.sex = sex;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userId=" + userId +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", sex=" + sex +
+                ", birthday='" + birthday + '\'' +
+                ", image='" + image + '\'' +
+                ", introduce='" + introduce + '\'' +
                 '}';
     }
 }

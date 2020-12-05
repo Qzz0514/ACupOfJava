@@ -5,6 +5,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.UserService;
+import group.ACupOfJava.util.JedisUtil;
+import group.ACupOfJava.util.MailUtil;
 import group.ACupOfJava.util.StringUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +14,13 @@ import org.springframework.http.HttpRequest;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -132,25 +136,32 @@ public class UserController {
     @ResponseBody
     public String register(String name, String email, String password){
         try {
-
-            if (StringUtil.isEmpty(email) || StringUtil.isEmpty(password) ||StringUtil.isEmpty(name)) {
+            if (StringUtil.isEmpty(email) || StringUtil.isEmpty(password) ||StringUtil.isEmpty(name) || !email.contains("@")) {
                 return "error";
-            }
-            else {
+            } else {
                 List<User> users = userService.find();
                 List<String> emails = new ArrayList<>();
                 for (User user: users) {
                     emails.add(user.getEmail());
                 }
                 if (!emails.contains(email)){
-                    Map<String,String> map = new HashMap<>();
-                    map.put("name",name);
-                    map.put("email",email);
-                    map.put("password",password);
-                    User addUser = userService.addUser(map);
-//                    System.out.println(addUser);
-                    return "register success";
-                }else {
+
+                    Jedis jedis = JedisUtil.geyJedis();
+                    // 加密
+                    String md5Str = DigestUtils.md5DigestAsHex((email + name + password).getBytes());
+                    // 存数据
+                    jedis.hset(md5Str, "email", email);
+                    jedis.hset(md5Str, "name", name);
+                    jedis.hset(md5Str, "password", password);
+                    // 存储有效时间
+                    jedis.expire(md5Str, 60 * 5); // 五分钟的有效时间
+
+                    // 调用邮箱验证
+                    MailUtil.sendMail(email,
+                            "此邮件仅为邮箱注册使用，如非本人，无视即可。<br> 开启验证：" +
+                                    "<a href=\"http://123.57.63.212:8080/yike/user/makesure?code=" + md5Str + "\" />点击激活账号</a>");
+                    return "ready to makesure";
+                } else {
                     return "this mail has been registerd!";
                 }
             }
@@ -159,6 +170,23 @@ public class UserController {
         }
         return null;
     }
+
+    @RequestMapping("makesure")
+    @ResponseBody
+    public String makesureMail(String code) {
+        // 找信息，看时间
+        Jedis jedis = JedisUtil.geyJedis();
+        Map<String, String> mesMap = jedis.hgetAll(code);
+        jedis.del(code);
+        if (mesMap.isEmpty()) {
+            // 已经过期
+            return "retry register";
+        } else {
+            User addUser = userService.addUser(mesMap);
+            return "register success";
+        }
+    }
+
 
     //建立聊天关系
     @RequestMapping("addTalkRelation")
