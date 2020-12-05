@@ -60,9 +60,7 @@ public class ShopController {
                     }
                     fis.close();
                     os.close();
-
                 }
-
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -213,8 +211,6 @@ public class ShopController {
         return shopService.recentList(userId);
     }
     //(4)预约列表图片
-
-    //收藏列表图片
     @RequestMapping("recentImage")
     @ResponseBody
     public void recentImage(String image, int user_id, HttpServletResponse response, HttpSession session) {
