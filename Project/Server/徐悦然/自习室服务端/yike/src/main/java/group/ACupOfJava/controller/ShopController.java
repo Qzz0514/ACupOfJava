@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.beans.PropertyVetoException;
 import java.io.*;
+import java.net.URLDecoder;
 import java.util.*;
 import java.util.List;
 
@@ -326,6 +327,14 @@ public class ShopController {
             e.printStackTrace();
         }
 
+    }
+
+    //spinner筛选城市
+    @RequestMapping("selectCity")
+    @ResponseBody
+    public List<Shop> selectCity(@RequestParam(value = "location") String city) {
+        System.out.println(city);
+        return shopService.selectCity(city);
     }
 
 

@@ -7,6 +7,7 @@
     <!-- 配置这个，数据库返回的数据可以从user_id转为userId，这样能封装到user对象中 -->
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
     <!--  别名  -->
     <typeAliases>

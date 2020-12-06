@@ -28,6 +28,7 @@ public interface ShopService {
 
     public List<ImageBox> findbannerImagesById(int shop_id);
     public List<ImageBox> bannerImages(int shop_id);
+    public List<Shop> selectCity(String location);
 
 
 

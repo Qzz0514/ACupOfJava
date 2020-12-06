@@ -80,6 +80,11 @@ public class ShopSerivceImpl implements ShopService {
         return shopDao.bannerImages(shop_id);
     }
 
+    @Override
+    public List<Shop> selectCity(String location) {
+        System.out.println("service层" + location);
+        return shopDao.selectCity(location);
+    }
 
 
 }
