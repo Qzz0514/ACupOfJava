@@ -1,0 +1,2 @@
+include ':app', ':SeatTable'
+rootProject.name='Moment'

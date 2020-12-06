@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#4F94F3">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back"
+            android:onClick="onclick" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="设置"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="40dp"
+        xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+        <LinearLayout
+            android:id="@+id/ll_manage"
+            android:onClick="onclick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账户管理"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <TextView
+                android:alpha="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/iv_set_headpic"
+                android:src="@drawable/set_arrow_right"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_safe"
+            android:onClick="onclick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_manage"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账户与安全"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <TextView
+                android:alpha="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/iv_set_arrow"
+                android:src="@drawable/set_arrow_right"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_notify"
+            android:onClick="onclick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_set_safe"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="通知设置"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <TextView
+                android:alpha="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/iv_set_arrow1"
+                android:src="@drawable/set_arrow_right"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_secret"
+            android:onClick="onclick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_set_notify"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="隐私设置"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <TextView
+                android:alpha="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/iv_set_arrow2"
+                android:src="@drawable/set_arrow_right"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_set_secret"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统呈深色模式"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <TextView
+                android:alpha="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ToggleButton
+                android:id="@+id/switch1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:button="@drawable/btn_backgrounds"
+                android:checked="true"
+                android:onClick="onclick"
+                android:textOff="关"
+                android:textOn="开" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_cache"
+            android:onClick="onclick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_set_model"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清理缓存"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <TextView
+                android:alpha="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/iv_set_arrow4"
+                android:src="@drawable/set_arrow_right"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_feedback"
+            android:onClick="onclick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_set_cache"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="意见反馈"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
+            <TextView
+                android:alpha="0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/iv_set_arrow5"
+                android:src="@drawable/set_arrow_right"
+                android:layout_width="16dp"
+                android:layout_height="16dp"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_set_exit"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blueshape"
+            android:text="退出登录"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"
+            android:textColor="#ffffff"/>
+    </RelativeLayout>
+
+</LinearLayout>
+
+
+

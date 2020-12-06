@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <LinearLayout
+        app:ignore="NamespaceTypo"
+        android:background="@drawable/list_corner_round"
+        android:orientation="horizontal"
+        xmlns:app="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:http="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:background="@drawable/list_corner_round"
+        android:layout_height="140dp"
+        android:layout_width="140dp"
+        android:id="@+id/store_img"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"/>
+
+    <RelativeLayout
+        android:background="@drawable/list_corner_round"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10dp">
+
+    <TextView
+        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/store_name"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/color_white"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/time"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/color_white"/>
+
+    <TextView
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/end_time"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="80dp"
+        android:textColor="@color/color_white"/>
+
+    <TextView
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/location"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="110dp"
+        android:textColor="@color/color_white"/>
+
+    <TextView
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/star"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="145dp"
+        android:textColor="@color/color_white"
+        android:onClick="onClick"/>
+
+    <TextView
+        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/collect"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="145dp"
+        android:textColor="@color/color_white"/>
+
+    <ImageView
+        android:background="@drawable/date"
+        android:layout_height="16dp"
+        android:layout_width="16dp"
+        android:id="@+id/time_img"
+        android:layout_marginTop="50dp"/>
+
+    <ImageView
+        android:background="@drawable/date"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:id="@+id/endtime_img"
+        android:layout_marginTop="80dp"/>
+
+    <ImageView
+        android:background="@drawable/location"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:id="@+id/location_img"
+        android:layout_marginTop="110dp"/>
+
+    <ImageView
+        android:background="@drawable/put"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:id="@+id/star_img"
+        android:layout_marginTop="145dp"
+        android:onClick="onStarClick"/>
+
+    <ImageView
+        android:background="@drawable/collect"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:id="@+id/collect_img"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="145dp"/>
+
+    <ImageView
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:id="@+id/arrow"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="85dp"
+        android:src="@drawable/arrow"/>
+
+</RelativeLayout>
+
+</LinearLayout>

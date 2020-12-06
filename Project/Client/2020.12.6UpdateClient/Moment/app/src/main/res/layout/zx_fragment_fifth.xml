@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:id="@+id/root"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/mine_sharp">
+
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="倒一杯Java"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_headPic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp" />
+
+    <TextView
+        android:id="@+id/tv_gxqm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="高效学习，一刻千金"
+        android:layout_below="@id/iv_headPic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/iv_pencil"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:src="@drawable/pencil"
+        android:layout_toRightOf="@id/tv_gxqm"
+        android:layout_below="@+id/iv_headPic"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="1dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_gxqm"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:id="@+id/tv_mine_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/mine_handup"
+            android:gravity="center"
+            android:text="已报名"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_mine_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="已收藏"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:drawableTop="@drawable/mine_like"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="审核反馈"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:drawableTop="@drawable/mine_feedback"/>
+
+        <TextView
+            android:id="@+id/tv_mine_set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="设置"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:drawableTop="@drawable/mine_setting"/>
+    </LinearLayout>
+
+</RelativeLayout>

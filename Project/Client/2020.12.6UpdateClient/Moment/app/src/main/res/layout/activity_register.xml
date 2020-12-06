@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--qzz：注册-->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#4F94F3">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="新用户注册"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/et_reusername"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:background="@drawable/editshape"
+            android:hint="用户名"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
+        <EditText
+            android:id="@+id/et_reuseremail"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:background="@drawable/editshape"
+            android:hint="邮箱"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/et_reusername"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/et_reuserpwd"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:background="@drawable/editshape"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/et_reuseremail"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:text="下一步"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:background="@drawable/btnshape"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:layout_below="@+id/et_reuserpwd"/>
+
+        <CheckBox
+            android:id="@+id/cb_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_register"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="90dp"/>
+        <TextView
+            android:id="@+id/tv_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cb_agree"
+            android:text="同意"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:layout_below="@+id/btn_register"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_agree"
+            android:text="《用户协议》《隐私条款》"
+            android:textSize="15sp"
+            android:textColor="#07D0F3"
+            android:layout_below="@+id/btn_register"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
