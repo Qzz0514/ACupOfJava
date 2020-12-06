@@ -9,4 +9,10 @@
     <color name="color_set_orange">#FFA500</color>
     <color name="color_white">#ffffff</color>
     <color name="color_black">#000000</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="orange">#D2691E</color>
+    <color name="grey">#DCDCDC</color>
+    <color name="rouSe">#FFDAB9</color>
+    <color name="orangeRed">#FF4500</color>
 </resources>

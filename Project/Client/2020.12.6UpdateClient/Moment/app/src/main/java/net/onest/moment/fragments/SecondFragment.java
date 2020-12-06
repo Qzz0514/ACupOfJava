@@ -59,13 +59,17 @@ public class SecondFragment extends Fragment {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
                 case 1:
-                    List<Shop> shops = (List<Shop>) msg.obj;
+                    final List<Shop> shops = (List<Shop>) msg.obj;
                     ShopAdapter adapter = new ShopAdapter(getContext(), shops, R.layout.sxh_seconedfragment_item);
                     adapter.notifyDataSetChanged();
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Shop shop = shops.get(position);
                             Intent intent = new Intent(getContext(), Sale.class);
+                            intent.putExtra("shopId", shop.getShopId() + "");
+                            intent.putExtra("shopName", shop.getName());
+                            intent.putExtra("shopImage", shop.getImage());
                             startActivity(intent);
                         }
                     });
