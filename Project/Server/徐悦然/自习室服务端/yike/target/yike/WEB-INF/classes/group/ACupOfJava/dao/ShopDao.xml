@@ -34,9 +34,13 @@
     <select id="recentList" resultType="group.ACupOfJava.pojo.Shop" parameterType="int">
         SELECT distinct shop.* from user,shop,appointment where user.user_id = appointment.user_id and shop.shop_id = appointment.shop_id and user.user_id = #{id}
     </select>
-    <select id="bannerImages" resultType="java.lang.Integer" parameterType="int">
-        select count(*) from imagebox where shop_id = #{shop_id};
+    <select id="bannerImages" resultType="group.ACupOfJava.pojo.ImageBox" parameterType="int">
+        select * from imagebox where shop_id = #{shop_id};
     </select>
+    <select id="findbannerImagesById" resultType="group.ACupOfJava.pojo.ImageBox" parameterType="int">
+        select * from imagebox where shop_id = #{shop_id};
+    </select>
+
 
 
 </mapper>

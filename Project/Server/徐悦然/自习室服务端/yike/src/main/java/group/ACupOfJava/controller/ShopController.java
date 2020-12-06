@@ -1,6 +1,7 @@
 package group.ACupOfJava.controller;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import group.ACupOfJava.pojo.ImageBox;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.service.ShopService;
 import group.ACupOfJava.util.JedisUtil;
@@ -19,9 +20,11 @@ import redis.clients.jedis.Jedis;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.beans.PropertyVetoException;
 import java.io.*;
 import java.util.*;
+import java.util.List;
 
 /**
  * ClassName:ShopController
@@ -176,6 +179,7 @@ public class ShopController {
     @RequestMapping("hot")
     @ResponseBody
     public List<Shop> hot(){
+
         return shopService.hotList();
     }
 
@@ -280,18 +284,51 @@ public class ShopController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+
 
 
     //展示上商店详情轮播图
+
+    @RequestMapping("findbannerImages")
+    @ResponseBody
+    public List<ImageBox> findbannerImages(@RequestParam(value = "shop_id") int shopId) {
+        return shopService.findbannerImagesById(shopId);
+    }
+
+
     @RequestMapping("bannerImages")
     @ResponseBody
-    public void bannerImages(@RequestParam(value = "shop_id") int shopId) {
-        int count = shopService.bannerImages(shopId);
-        for (int i = 0; i <count ; i++) {
+    public void bannerImages(@RequestParam(value = "image") String image, @RequestParam(value = "shop_id") int shopId, HttpServletResponse response, HttpSession session) {
 
+        try {
+            List<ImageBox> images = shopService.bannerImages(shopId);
+            for (ImageBox imageBox : images) {
+                System.out.println(imageBox.toString());
+                if (image.equals(imageBox.getImgName())) {
+                    File file = new File(session.getServletContext().getRealPath("/imageBox/") + imageBox.getImgName());
+                    System.out.println(file.getAbsolutePath());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
+
+
 }
 
 

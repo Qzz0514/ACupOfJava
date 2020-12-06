@@ -1,6 +1,8 @@
 package group.ACupOfJava.service.impl;
 import group.ACupOfJava.dao.ShopDao;
+import group.ACupOfJava.pojo.ImageBox;
 import group.ACupOfJava.pojo.Shop;
+import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,9 +70,13 @@ public class ShopSerivceImpl implements ShopService {
         return shopDao.recentList(id);
     }
 
+    @Override
+    public List<ImageBox> findbannerImagesById(int shop_id) {
+        return shopDao.findbannerImagesById(shop_id);
+    }
 
     @Override
-    public int bannerImages(int shop_id) {
+    public List<ImageBox> bannerImages(int shop_id) {
         return shopDao.bannerImages(shop_id);
     }
 

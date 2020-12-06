@@ -226,6 +226,14 @@ public class UserController {
         }
     }
 
+    //通过id查找用户
+    @RequestMapping("findUserById")
+    @ResponseBody
+    public User findUserById(@RequestParam(value = "user_id") int userId) {
+        User user = userService.findUserById(userId);
+        return user;
+    }
+
 
 
 

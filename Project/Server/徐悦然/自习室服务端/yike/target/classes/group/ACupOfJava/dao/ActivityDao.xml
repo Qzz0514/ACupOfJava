@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="group.ACupOfJava.dao.ActivityDao">
+
+
+    <select id="findActivtyById" resultType="group.ACupOfJava.pojo.Activitys">
+        SELECT activity.* from shop,activity,shop_activity where shop.shop_id = shop_activity.shop_id and activity.a_id = shop_activity.a_id and shop.shop_id = #{shop_id}
+    </select>
+</mapper>

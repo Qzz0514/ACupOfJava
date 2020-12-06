@@ -35,4 +35,6 @@ public interface UserDao {
     //返回用户的id
     @Select("select user_id from user where email = #{email}")
     public int getCurrentUserId(String email);
+
+    public User findUserById(int user_id);
 }
