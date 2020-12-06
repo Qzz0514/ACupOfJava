@@ -68,6 +68,7 @@ public class SecondFragment extends Fragment {
                             Shop shop = shops.get(position);
                             Intent intent = new Intent(getContext(), Sale.class);
                             intent.putExtra("shopId", shop.getShopId() + "");
+                            Log.e( "onItemClick: ",shop.getShopId()+"" );
                             intent.putExtra("shopName", shop.getName());
                             intent.putExtra("shopImage", shop.getImage());
                             startActivity(intent);

@@ -293,18 +293,19 @@
         android:textAlignment="textEnd"
         android:text="22.5元"
         android:gravity="end" />
+
     <TextView
         android:id="@+id/groupPurchasePrice"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_marginTopPercent="76%"
-        app:layout_marginLeftPercent="84%"
-        app:layout_heightPercent="4%"
-        app:layout_widthPercent="14%"
+        android:gravity="end"
+        android:textAlignment="textEnd"
         android:textColor="@color/orangeRed"
         android:textSize="18sp"
-        android:textAlignment="textEnd"
-        android:gravity="end" />
+        app:layout_heightPercent="4%"
+        app:layout_marginLeftPercent="84%"
+        app:layout_marginTopPercent="76%"
+        app:layout_widthPercent="14%" />
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
