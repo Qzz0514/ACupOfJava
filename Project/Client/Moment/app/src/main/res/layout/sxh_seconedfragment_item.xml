@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+    app:ignore="NamespaceTypo"
+    android:background="@drawable/list_corner_round"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:http="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:background="@drawable/list_corner_round"
+        android:layout_height="130dp"
+        android:layout_width="130dp"
+        android:id="@+id/store_img"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/list_corner_round">
+
+        <TextView
+            android:id="@+id/store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="12dp"
+            android:text="1111111111111111"
+            android:textColor="@color/color_white"
+            android:textSize="21sp" />
+
+        <ImageView
+            android:id="@+id/time_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@+id/store_name"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/date" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/store_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5.5dp"
+            android:layout_toRightOf="@+id/time_img"
+            android:text="11111111111"
+            android:textColor="@color/color_white"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/endtime_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@+id/time_img"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/date" />
+
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/time"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="5.5dp"
+            android:layout_toRightOf="@+id/endtime_img"
+            android:text="11111111111111111"
+            android:textColor="@color/color_white"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/location_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/endtime_img"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/location" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/end_time"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@id/location_img"
+            android:text="1111111111111"
+            android:textColor="@color/color_white"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/star_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/location_img"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/star"
+            android:onClick="onStarClick" />
+
+        <TextView
+            android:id="@+id/star"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/end_time"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="48.5dp"
+            android:layout_toRightOf="@+id/star_img"
+            android:onClick="onClick"
+            android:text="11111111"
+            android:textColor="@color/color_white" />
+
+        <ImageView
+            android:id="@+id/collect_img"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@+id/location_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/star"
+            android:background="@drawable/collect" />
+
+        <TextView
+            android:id="@+id/collect"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/end_time"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="48.5dp"
+            android:layout_toRightOf="@+id/collect_img"
+            android:text="1111111"
+            android:textColor="@color/color_white" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="-1dp"
+            android:layout_below="@id/end_time"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+
+</LinearLayout>

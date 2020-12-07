@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cities">
+        <item>石家庄</item>
+        <item>北京</item>
+        <item>上海</item>
+    </string-array>
+    <string-array name="distance">
+        <item>>1km以内</item>
+        <item>1-3km</item>
+        <item>3-5km</item>
+        <item>5km以外</item>
+    </string-array>
+    <string-array name="price">
+        <item>小于10元/小时</item>
+        <item>10-30元/小时</item>
+        <item>30-80元/小时</item>
+        <item>大于80元/小时</item>
+    </string-array>
+</resources>

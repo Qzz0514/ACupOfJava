@@ -266,7 +266,6 @@ public class ShopController {
         List<Shop> shops = shopService.talkList(list);
         try {
             for (Shop shop : shops) {
-
                 if (image.equals(shop.getImage())) {
                     File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     System.out.println(file.getAbsolutePath());
