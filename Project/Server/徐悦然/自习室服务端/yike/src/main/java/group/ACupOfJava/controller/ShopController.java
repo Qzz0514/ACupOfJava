@@ -292,7 +292,7 @@ public class ShopController {
 
     //展示上商店详情轮播图
 
-    @RequestMapping("findbannerImages")
+    @RequestMapping("banner")
     @ResponseBody
     public List<ImageBox> findbannerImages(@RequestParam(value = "shop_id") int shopId) {
         return shopService.findbannerImagesById(shopId);
@@ -319,7 +319,6 @@ public class ShopController {
                     fis.close();
                     os.close();
                 }
-
             }
 
 

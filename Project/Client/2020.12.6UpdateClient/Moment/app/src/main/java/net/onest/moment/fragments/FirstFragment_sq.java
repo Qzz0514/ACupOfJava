@@ -103,7 +103,6 @@ public class FirstFragment_sq extends Fragment {
         initOkHttpClient();
         simpStringParamPostRequest();
 
-
         return view;
     }
     private void initOkHttpClient() {
@@ -168,7 +167,7 @@ public class FirstFragment_sq extends Fragment {
                     //第1种：获取本地文件输出流，经过流的循环读写实现图片拷贝
                     //第2种：通过BitmapFactory将输入流解析成一个Bitmap对象
                     Bitmap bitmap = BitmapFactory.decodeStream(in);
-                    Log.e("Bitmap",bitmap.toString() );
+                    //Log.e("Bitmap",bitmap.toString() );
                     shop.setBitmap(bitmap);
                     latch.countDown();
                     Log.e("获取图片当前的个数", latch.getCount()+"");
