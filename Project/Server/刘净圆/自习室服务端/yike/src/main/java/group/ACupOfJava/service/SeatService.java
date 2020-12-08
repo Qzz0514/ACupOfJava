@@ -1,10 +1,11 @@
 package group.ACupOfJava.service;
 
-/**
- * ClassName:SeatService
- * Packeage:group.ACupOfJava.service
- *
- * @Date:2020/11/26 8:36
- */
+import group.ACupOfJava.pojo.Room;
+import group.ACupOfJava.pojo.Seat;
+
+import java.util.List;
+
 public interface SeatService {
+    public void takeSeats(List<Seat> seats);
+    public Room getRoomRowAndCol(String room_id);
 }

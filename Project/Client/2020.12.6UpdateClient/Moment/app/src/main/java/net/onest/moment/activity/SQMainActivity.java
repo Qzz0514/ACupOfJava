@@ -42,7 +42,6 @@ public class SQMainActivity extends AppCompatActivity {
     private OkHttpClient okHttpClient;
     private List<Shop> lists = new ArrayList<>();
     private ListView listView1;
-
     private Handler myHandler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -50,24 +49,31 @@ public class SQMainActivity extends AppCompatActivity {
                 case 1:
                     List<Shop> shops = (List<Shop>) msg.obj;
                     Log.e( "handleMessage: ",shops.toString() );
-                    ZiAdapter adapter = new ZiAdapter(SQMainActivity.this, shops, R.layout.sq_tab11_item);
+                    ZiAdapter adapter = new ZiAdapter(SQMainActivity.this, shops, R.layout.sq_tab1_item);
                     adapter.notifyDataSetChanged();
                     listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent = new Intent(SQMainActivity.this,MyFangJian.class);
-                            int num = lists.get(position).getShopId();
-                            String name = lists.get(position).getName();
+                            Intent intent = new Intent(SQMainActivity.this, MyFangJian.class);
+
+                            int num =lists.get(position).getShopId();
+                            String name =lists.get(position).getName();
                             int likes = lists.get(position).getLikes();
                             int stars = lists.get(position).getStars();
-                            Log.e("onItemClick", likes + "");
+                            Bitmap bitmap = lists.get(position).getBitmap();
+                            //Bundle bundle = new Bundle();
+                            //bundle.putParcelable("bitmap", bitmap);
 
+                            Log.e("onItemClick: ", likes+"");
                             String location = lists.get(position).getLocation();
                             intent.putExtra("shop_id", num + "");
                             intent.putExtra("shop_name",name);
                             intent.putExtra("shop_likes", likes+"");
                             intent.putExtra("shop_stars", stars+"");
                             intent.putExtra("shop_location", location);
+                            //intent.putExtra("bitmap", bitmap);
+
+                            //intent.putExtra("bundle", bundle);
                             startActivity(intent);
                         }
                     });
@@ -83,6 +89,7 @@ public class SQMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sq_activity_main);
+
 
         listView1 = findViewById(R.id.list1);
 

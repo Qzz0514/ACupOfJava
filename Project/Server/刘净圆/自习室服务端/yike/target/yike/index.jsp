@@ -5,19 +5,20 @@
     <title>Java后端WebSocket的Tomcat实现</title>
 </head>
 <body>
-    Welcome<br/><input id="text" type="text"/>
-    <button onclick="send()">发送消息</button>
-    <hr/>
-    <button onclick="closeWebSocket()">关闭WebSocket连接</button>
-    <hr/>
-    <div id="message"></div>
+<input id="tid" type="text" placeholder="对方ID"/>
+Welcome<br/><input id="text" type="text"/>
+<button onclick="send()">发送消息</button>
+<hr/>
+<button onclick="closeWebSocket()">关闭WebSocket连接</button>
+<hr/>
+<div id="message"></div>
 </body>
 
 <script type="text/javascript">
     var websocket = null;
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://172.20.10.11:8080/yike/websocket/1");
+        websocket = new WebSocket("ws://123.57.63.212:8080/yike/websocket/" + ${user_id});
     } else {
         alert('当前浏览器 Not support websocket')
     }
@@ -64,9 +65,10 @@
     function send() {
         var message = document.getElementById('text').value;
         var data = {
-            "send_id": "1",
-            "target_id": "2",
-            "message": message
+            "send_id": ${user_id} + "",
+            "target_id": document.getElementById('tid').value,
+            "message": message,
+            "type": "text"
         }
         websocket.send(JSON.stringify(data));
     }

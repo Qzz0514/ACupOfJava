@@ -12,6 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo" target="1.5" />
+      <module name="test" target="1.5" />
       <module name="yike" target="1.8" />
     </bytecodeTargetLevel>
   </component>

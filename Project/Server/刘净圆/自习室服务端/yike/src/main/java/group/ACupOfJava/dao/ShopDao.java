@@ -1,5 +1,6 @@
 package group.ACupOfJava.dao;
 
+import group.ACupOfJava.pojo.ImageBox;
 import group.ACupOfJava.pojo.Shop;
 import org.apache.ibatis.annotations.Select;
 
@@ -29,15 +30,17 @@ public interface ShopDao {
     public int updateStars(Map<String, Integer> map);
     public List<Shop> hotList();
 
-
-
     public int addLikes(Map<String,Integer> map);
     public int updateLikes(Map<String, Integer> map);
     public List<Shop> recentList(int id);
 
-
-
     public List<Shop> talkList(List<String> list);
+
+
+    public List<ImageBox> findbannerImagesById(int shop_id);
+    public List<ImageBox> bannerImages(int shop_id);
+
+    public List<Shop> selectCity(String location);
 
 
 

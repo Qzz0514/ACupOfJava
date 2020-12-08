@@ -55,9 +55,8 @@ public class WebSocketServer {
 		// 读取离线发送信息
 		Jedis jedis = JedisUtil.geyJedis();
 		while (jedis.llen("receive_" + userId) > 0) {
-			JSONObject jsonObject = new JSONObject(jedis.lpop("receive_" + userId));
 			try {
-				this.sendMessage(jsonObject.getString("message"));
+				this.sendMessage(jedis.lpop("receive_" + userId));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -81,28 +80,43 @@ public class WebSocketServer {
 	 * @param session 可选的参数
 	 */
 	@OnMessage
-	public void onMessage(String message, Session session) {
+	public void onMessage(String message, Session session) throws IOException {
 
 		JSONObject jsonObject = new JSONObject(message);
+		Jedis jedis = JedisUtil.geyJedis();
+
+
 		String sendId = jsonObject.getString("send_id");
 		Integer targetId = Integer.parseInt(jsonObject.get("target_id").toString());
-		String talk = jsonObject.getString("message");
+		String type = jsonObject.getString("type");
+		String talk = null;
 
-		Jedis jedis = JedisUtil.geyJedis();
+
+		if (type.equals("text")) {
+			talk = jsonObject.getString("message");
+		} else {
+			// 语音
+			// 存储位置
+			talk = jsonObject.getString("voice");
+		}
+
+		JSONObject object = new JSONObject();
+		object.put("talk", talk);
+		object.put("type", type);
+		object.put("time", System.currentTimeMillis());
+		String sendMes = object.toString();
 
 		WebSocketServer webSocketTest = WebSocketUtil.webSocketMap.get(targetId);
 		if (webSocketTest != null) {
-			try {
-				webSocketTest.sendMessage(talk);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			webSocketTest.sendMessage(sendMes);
 		} else {
 			// 进入缓存等待登陆
-//			WebSocketUtil.webSocketMessage.get(targetId).add(message);
-			jedis.rpush("receive_" + targetId, message);
+			jedis.rpush("receive_" + targetId, sendMes);
 		}
 
+		// 存储历史聊天信息
+		jedis.rpush(sendId + "_" + targetId, sendMes);
+		jedis.close();
 
 
 		// 存储好友列表
@@ -112,9 +126,7 @@ public class WebSocketServer {
 		}
 
 
-		// 存储历史聊天信息
-		jedis.rpush(sendId + "_" + targetId, talk);
-		jedis.close();
+
 	}
 
 	/**

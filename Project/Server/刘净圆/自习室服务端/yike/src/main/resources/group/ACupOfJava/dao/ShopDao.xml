@@ -36,6 +36,14 @@
     </select>
 
 
-
+    <select id="bannerImages" resultType="group.ACupOfJava.pojo.ImageBox" parameterType="int">
+        select * from imagebox where shop_id = #{shop_id};
+    </select>
+    <select id="findbannerImagesById" resultType="group.ACupOfJava.pojo.ImageBox" parameterType="int">
+        select * from imagebox where shop_id = #{shop_id};
+    </select>
+    <select id="selectCity" resultType="group.ACupOfJava.pojo.Shop" parameterType="string">
+        select * from shop where location like concat('%',#{location},'%')
+    </select>
 
 </mapper>

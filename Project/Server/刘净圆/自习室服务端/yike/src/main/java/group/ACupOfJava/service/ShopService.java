@@ -1,5 +1,6 @@
 package group.ACupOfJava.service;
 
+import group.ACupOfJava.pojo.ImageBox;
 import group.ACupOfJava.pojo.Shop;
 
 import java.util.List;
@@ -24,6 +25,9 @@ public interface ShopService {
     public List<Shop> talkList(List<String> list);
     public List<Shop> recentList(int id);
 
+    public List<ImageBox> findbannerImagesById(int shop_id);
+    public List<ImageBox> bannerImages(int shop_id);
+    public List<Shop> selectCity(String location);
 
 
 }

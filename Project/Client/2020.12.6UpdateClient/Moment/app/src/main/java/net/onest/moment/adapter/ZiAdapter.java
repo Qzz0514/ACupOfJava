@@ -1,12 +1,10 @@
 package net.onest.moment.adapter;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import net.onest.moment.R;
 import net.onest.moment.entity.Shop;
 import net.onest.moment.manager.ZQImageViewRoundOval;
