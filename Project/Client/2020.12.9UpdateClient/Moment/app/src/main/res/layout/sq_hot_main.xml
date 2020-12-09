@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <net.onest.moment.manager.ZQImageViewRoundOval
+       android:id="@+id/touxiang"
+        app:layout_marginLeftPercent="6%"
+        app:layout_marginTopPercent="5%"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:adjustViewBounds="true" />
+
+    <TextView
+        android:textSize="15dp"
+        android:layout_toRightOf="@id/touxiang"
+        app:layout_marginTopPercent="6%"
+        app:layout_marginLeftPercent="3%"
+        android:id="@+id/name1"
+        android:textColor="#000000"
+        android:text="倒一杯java"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textSize="12dp"
+        android:layout_toRightOf="@id/touxiang"
+        android:layout_below="@id/name1"
+        app:layout_marginTopPercent="1%"
+        app:layout_marginLeftPercent="3%"
+        android:id="@+id/count1"
+        android:textColor="#000000"
+        android:text="已完成11次自习"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/place1"
+        android:textSize="13dp"
+        android:gravity="center"
+        app:layout_marginRightPercent="10%"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/shape_corner1"
+        app:layout_marginTopPercent="6%"
+        app:layout_widthPercent="13%"
+        app:layout_heightPercent="3%"
+        android:text="石家庄"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        app:tint="#8B008B"
+        android:id="@+id/dingwei"
+        android:src="@drawable/dingwei"
+        android:layout_toLeftOf="@id/place1"
+        app:layout_marginTopPercent="6.3%"
+        app:layout_marginRightPercent="1.5%"
+        app:layout_widthPercent="4%"
+        app:layout_heightPercent="2.5%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.fragment.app.FragmentTabHost
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@android:id/tabhost"
+        app:layout_marginTopPercent="14%"
+        app:layout_marginLeftPercent="2%"
+        app:layout_widthPercent="96%"
+        app:layout_heightPercent="90%"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+            <TabWidget
+                android:tabStripEnabled="false"
+                android:id="@android:id/tabs"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"/>
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </FrameLayout>
+
+    </androidx.fragment.app.FragmentTabHost>
+</androidx.percentlayout.widget.PercentRelativeLayout>

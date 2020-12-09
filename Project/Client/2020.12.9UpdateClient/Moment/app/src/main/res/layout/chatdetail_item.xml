@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--qzz：聊天详情子项-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/rl_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_seller"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_leftchat"
+            android:background="@drawable/othermsg"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/iv_seller"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_right"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_left">
+
+        <ImageView
+            android:id="@+id/iv_my"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/tv_rightchat"
+            android:background="@drawable/mymsg"
+            android:padding="5dp"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_toLeftOf="@+id/iv_my"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:textSize="15sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:background="#4F94F3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_acti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择活动"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_below="@id/tv_acti"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+    </RelativeLayout>
+
+
+
+    <Spinner
+        android:id="@+id/spin_one"
+        android:textAlignment="textStart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_marginTopPercent="12%"
+        app:layout_heightPercent="4%"
+        app:layout_widthPercent="30%"
+        app:layout_marginLeftPercent="5%"
+        android:background="@color/color_white"
+        style="@style/spinner"
+        android:entries="@array/cities"
+        android:spinnerMode="dropdown"
+        android:gravity="start" />
+
+    <Spinner
+        android:id="@+id/spin_two"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        app:layout_marginTopPercent="12%"
+        app:layout_heightPercent="4%"
+        app:layout_widthPercent="30%"
+        app:layout_marginLeftPercent="35%"
+        android:background="@color/color_white"
+        style="@style/spinner"
+        android:entries="@array/distance"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/spin_three"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAlignment="center"
+        android:gravity="start"
+        app:layout_marginTopPercent="12%"
+        app:layout_heightPercent="4%"
+        app:layout_widthPercent="30%"
+        app:layout_marginLeftPercent="65%"
+        android:background="@color/color_white"
+        style="@style/spinner"
+        android:entries="@array/price"
+        android:spinnerMode="dropdown" />
+
+    <ListView
+        android:id="@+id/activities"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_marginTopPercent="18%"
+        app:layout_heightPercent="80%"
+        app:layout_widthPercent="92%"
+        app:layout_marginLeftPercent="4%"
+        android:divider="#00000000"
+        android:dividerHeight="12dp"
+        app:layout_marginRightPercent="5%" />
+
+</androidx.percentlayout.widget.PercentFrameLayout>
