@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_corner"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <net.onest.moment.manager.ZQImageViewRoundOval
+        android:id="@+id/tu1"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="2%"
+        app:layout_marginBottomPercent="2%"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_weight="2"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/tit1"
+        android:textSize="22sp"
+        android:textColor="#ffffff"
+        app:layout_marginTopPercent="3%"
+        app:layout_marginLeftPercent="4%"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu2"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tit1"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="0.7%"
+        android:src="@drawable/date"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tit2"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu2"
+        android:layout_below="@id/tit1"
+        app:layout_marginTopPercent="1.18%"
+        app:layout_marginLeftPercent="2%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu3"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tu2"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="0.35%"
+        android:src="@drawable/date"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textSize="12dp"
+        android:id="@+id/tit3"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu3"
+        android:layout_below="@id/tit2"
+        app:layout_marginTopPercent="1.04%"
+        app:layout_marginLeftPercent="1.95%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu4"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tu3"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="2.9%"
+        app:layout_marginTopPercent="0.45%"
+        android:src="@drawable/dingwei"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tit4"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu3"
+        android:layout_below="@id/tit3"
+        app:layout_marginTopPercent="1.2%"
+        app:layout_marginLeftPercent="2%"
+        android:layout_width="150dp"
+        android:layout_height="30dp"/>
+
+    <ImageView
+        android:id="@+id/tu5"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tu4"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="2.4%"
+        android:src="@drawable/put"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tit5"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu5"
+        android:layout_below="@id/tit4"
+        app:layout_marginTopPercent="0.4%"
+        app:layout_marginLeftPercent="1.7%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tu4"
+        android:layout_toRightOf="@id/tu5"
+        android:src="@drawable/xin"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="2.45%"
+        app:layout_widthPercent="3%"
+        app:tint="#ffffff" />
+
+    <TextView
+        android:id="@+id/tit6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tit4"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="23dp"
+        android:layout_toRightOf="@id/tu6"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        app:layout_marginLeftPercent="1.5%"
+        app:layout_marginTopPercent="0.4%"/>
+
+    <ImageView
+        android:id="@+id/tu7"
+        android:layout_alignParentRight="true"
+        app:layout_widthPercent="5%"
+        app:layout_heightPercent="5%"
+        app:layout_marginTopPercent="11%"
+        app:layout_marginRightPercent="4%"
+        android:src="@drawable/ent1"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

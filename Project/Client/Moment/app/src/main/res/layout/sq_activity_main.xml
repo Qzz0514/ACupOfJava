@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#4F94F3">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="已收藏"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+   <ListView
+       android:divider="@android:color/transparent"
+       android:dividerHeight="10dp"
+       app:layout_marginTopPercent="13%"
+       android:id="@+id/list1"
+       app:layout_marginLeftPercent="6%"
+       app:layout_marginRightPercent="6%"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

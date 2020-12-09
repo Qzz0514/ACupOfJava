@@ -71,6 +71,10 @@
           <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.4.2" />
           <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.2" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+<<<<<<< HEAD
+=======
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
         </element>
       </element>
       <element id="directory" name="META-INF">

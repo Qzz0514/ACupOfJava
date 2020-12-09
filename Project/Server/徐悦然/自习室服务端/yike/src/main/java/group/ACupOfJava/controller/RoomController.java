@@ -23,10 +23,14 @@ public class RoomController {
         return roomService.roomList(shop_id);
     }
 
+<<<<<<< HEAD
     @Test
     public void test() {
 
     }
+=======
+
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
 
 
 

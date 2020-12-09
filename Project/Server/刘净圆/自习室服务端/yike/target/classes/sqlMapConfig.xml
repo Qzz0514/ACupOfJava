@@ -4,9 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-    <!--通过properties标签加载外部properties文件-->
-    <properties resource="jdbc.properties"></properties>
-
     <!-- 配置这个，数据库返回的数据可以从user_id转为userId，这样能封装到user对象中 -->
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -15,27 +12,5 @@
     <typeAliases>
         <package name="group.ACupOfJava.pojo"/>
     </typeAliases>
-
-    <!--数据源环境-->
-    <environments default="developement">
-        <environment id="developement">
-            <transactionManager type="JDBC"></transactionManager>
-            <dataSource type="POOLED">
-                <property name="driver" value="${jdbc.driver}"/>
-                <property name="url" value="${jdbc.url}"/>
-                <property name="username" value="${jdbc.username}"/>
-                <property name="password" value="${jdbc.password}"/>
-            </dataSource>
-        </environment>
-    </environments>
-
-
-    <!--加载映射关系-->
-    <mappers>
-        <!--指定接口所在的包-->
-        <package name="group.ACupOfJava.dao"></package>
-    </mappers>
-
-
 
 </configuration>

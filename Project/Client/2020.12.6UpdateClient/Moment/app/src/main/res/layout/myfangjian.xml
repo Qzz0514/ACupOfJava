@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingClass">
+
+    <ImageView
+        android:id="@+id/shop_image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/aaa" />
+            <!--<com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/banner"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/list_corner_round"
+                app:layout_heightPercent="25%"
+                app:layout_marginLeftPercent="5%"
+                app:layout_widthPercent="90%" />-->
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp"
+        app:layout_heightPercent="75%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="25%"
+        app:layout_widthPercent="90%">
+
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="无他自习室"
+            android:textColor="#000000"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/shop_like"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="55dp"
+            android:text="17"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="55dp"
+            android:text="条"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/shop_star"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="55dp"
+            android:text="93"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="55dp"
+            android:text="人预约"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/shop_location"
+            android:layout_width="320dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="100dp"
+            android:text="河北师大西门润丰底商秦淮小馆3楼\n306/307/308/309/310/311/312/313/314/315"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="115dp"
+            android:src="@drawable/phone" />
+    </RelativeLayout>
+
+    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/room"
+                app:layout_heightPercent="5%"
+                app:layout_marginLeftPercent="8%"
+                app:layout_marginTopPercent="50%"
+                app:layout_widthPercent="9%"/>
+            <TextView
+                android:id="@+id/shopname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选课中心"
+                android:textColor="#000000"
+                android:textSize="23dp"
+                app:layout_marginLeftPercent="22%"
+                app:layout_marginTopPercent="51%">
+
+            </TextView>
+
+            <ListView
+                android:divider="@android:color/transparent"
+                android:dividerHeight="10dp"
+                android:layout_marginTop="500dp"
+                android:id="@+id/list1"
+                app:layout_marginLeftPercent="6%"
+                app:layout_marginRightPercent="6%"
+                app:layout_marginBottomPercent="12%"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"> </ListView>
+
+
+    <ImageButton
+        android:id="@+id/call1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/call"
+        android:scaleType="centerInside"
+
+        android:tint="#FFA500"
+        app:layout_heightPercent="7%"
+        app:layout_marginBottomPercent="3%"
+        app:layout_marginLeftPercent="8%"
+        app:layout_widthPercent="7%" />
+    <TextView
+        android:text="电话"
+        android:textSize="16dp"
+        android:textColor="#FFA500"
+        android:layout_alignParentBottom="true"
+        app:layout_marginBottomPercent="1%"
+        app:layout_marginLeftPercent="8%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageButton
+        android:id="@+id/kefu1"
+        android:tint="#FFA500"
+
+        android:background="@drawable/kefu"
+        android:scaleType="centerInside"
+        app:layout_marginBottomPercent="3%"
+        app:layout_marginLeftPercent="20%"
+        app:layout_widthPercent="7%"
+        app:layout_heightPercent="7%"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="客服"
+        android:textSize="16dp"
+        android:textColor="#FFA500"
+        android:layout_alignParentBottom="true"
+        app:layout_marginBottomPercent="1%"
+        app:layout_marginLeftPercent="20%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageButton
+        android:id="@+id/more1"
+        android:tint="#FFA500"
+
+        android:background="@drawable/more"
+        android:scaleType="centerInside"
+        app:layout_marginBottomPercent="3%"
+        app:layout_marginLeftPercent="32%"
+        app:layout_widthPercent="7%"
+        app:layout_heightPercent="7%"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="收藏"
+        android:textSize="16dp"
+        android:textColor="#FFA500"
+        android:layout_alignParentBottom="true"
+        app:layout_marginBottomPercent="1%"
+        app:layout_marginLeftPercent="32%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/yuyue"
+        android:text="预约房间"
+        android:textSize="28dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/shape4"
+        app:layout_marginBottomPercent="1%"
+        app:layout_marginLeftPercent="43%"
+        app:layout_widthPercent="54%"
+        app:layout_heightPercent="8%"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

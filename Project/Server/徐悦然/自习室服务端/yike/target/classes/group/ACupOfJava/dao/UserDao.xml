@@ -23,5 +23,9 @@
         insert into talk values (#{user_id},#{shop_id})
     </insert>
 
+    <select id="findUserById" resultType="group.ACupOfJava.pojo.User" parameterType="int">
+        select * from user where user_id= #{user_id}
+    </select>
+
 
 </mapper>

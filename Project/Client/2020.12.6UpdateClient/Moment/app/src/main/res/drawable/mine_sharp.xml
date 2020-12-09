@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--    下圆角半径-->
+    <corners
+        android:bottomLeftRadius="20dp"
+        android:bottomRightRadius="20dp" />
+
+<!--    矩形的边线-->
+<!--    <stroke
+        android:width="10dp"
+        android:color="@color/color_purple"/>-->
+
+<!--    矩形内部-->
+    <gradient
+        android:endColor="#4F94F3"
+        android:startColor="#4F94F3"/>
+
+</shape>

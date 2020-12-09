@@ -159,7 +159,11 @@ public class UserController {
                     // 调用邮箱验证
                     MailUtil.sendMail(email,
                             "此邮件仅为邮箱注册使用，如非本人，无视即可。<br> 开启验证：" +
+<<<<<<< HEAD
                                     "<a href=\"http://localhost:8080/yike/user/makesure?code=" + md5Str + "\" />点击激活账号</a>");
+=======
+                                    "<a href=\"http://123.57.63.212:8080/yike/user/makesure?code=" + md5Str + "\" />点击激活账号</a>");
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
                     return "ready to makesure";
                 } else {
                     return "this mail has been registerd!";
@@ -198,6 +202,49 @@ public class UserController {
         int row = userService.addTalkRelation(map);
         System.out.println(row);
     }
+
+<<<<<<< HEAD
+
+
+=======
+
+    //上传用户头像
+    @RequestMapping("uploadUserImage")
+    @ResponseBody
+    public void uploadUserImage(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
+        try {
+            for (User user:userService.find()) {
+                if (name.equals(user.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/users/") + user.getImage());
+                    System.out.println(file.toString());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //通过id查找用户
+    @RequestMapping("findUserById")
+    @ResponseBody
+    public User findUserById(@RequestParam(value = "user_id") int userId) {
+        User user = userService.findUserById(userId);
+        return user;
+    }
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
+
+
+
 
 
 

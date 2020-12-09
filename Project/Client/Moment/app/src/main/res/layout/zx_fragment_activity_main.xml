@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.fragment.app.FragmentTabHost
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:background="#DCDCDC"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/nav_sharp"
+            android:layout_alignParentBottom="true"/>
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@android:id/tabs"/>
+    </RelativeLayout>
+</androidx.fragment.app.FragmentTabHost>

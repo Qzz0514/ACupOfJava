@@ -13,7 +13,12 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <!--组件扫描  主要扫描controller-->
     <context:component-scan base-package="group.ACupOfJava.controller"></context:component-scan>
     <!--配置mvc注解驱动-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <!--内部资源视图解析器-->
     <bean id="resourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"></property>
@@ -22,10 +27,9 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <!--开放静态资源访问权限-->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
 
-    <!--   文件上传解析器 -->
+    <!--  文件上传解析器  -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8" />
         <property name="maxInMemorySize" value="500000" />
-        <property name="maxUploadSizePerFile" value="50000" />
     </bean>
 </beans>

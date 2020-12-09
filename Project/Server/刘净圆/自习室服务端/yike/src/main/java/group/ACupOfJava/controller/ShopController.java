@@ -1,32 +1,30 @@
 package group.ACupOfJava.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import group.ACupOfJava.pojo.ImageBox;
 import group.ACupOfJava.pojo.Shop;
-import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.ShopService;
-import org.apache.ibatis.annotations.Result;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import group.ACupOfJava.util.JedisUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import redis.clients.jedis.Jedis;
 
-import javax.json.JsonArray;
-import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.beans.PropertyVetoException;
 import java.io.*;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
+import java.net.URLDecoder;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -38,48 +36,114 @@ import java.util.List;
 @Controller
 @RequestMapping("/shop")
 public class ShopController {
-    
 
     @Autowired
     private ShopService shopService;
 
 
-    @RequestMapping("demo")
+    @RequestMapping("find")
     @ResponseBody
-    public void demoupload(MultipartFile upload) {
-        // 获取方法名
-        String originalFilename = upload.getOriginalFilename();
-        // 转存
+    public List<Shop> find() {
+        return shopService.shopList();
+    }
+
+
+    @RequestMapping("receive")
+    @ResponseBody
+    public void receive(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
+        List<Shop> shops = shopService.shopList();
         try {
-            upload.transferTo(new File("D:\\software-course\\project training\\ACupOfJava\\Project\\刘净圆\\自习室服务端\\yike\\webapp\\images\\" + originalFilename));
+            for (Shop shop : shopService.shopList()) {
+                if (name.equals(shop.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    //(1)加入收藏
+    @RequestMapping("addCollection")
+    @ResponseBody
+    public void addCollection(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("user_id", userId);
+        map.put("shop_id", shopId);
+        int row = shopService.addCollection(map);
 
-    @RequestMapping("find")
-    @ResponseBody
-    public List<Shop> find(HttpServletRequest request, HttpServletResponse response) {
-        return shopService.shopList();
+        System.out.println(row);
+
+
     }
-    @RequestMapping("receive")
+    //收藏列表
+    @RequestMapping("findMyLikes")
     @ResponseBody
-    public void receive(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("image");
-        List<Shop> shops = shopService.shopList();
+    public List<Shop> findMyLikes(@RequestParam(value = "user_id", required = false) int userId) {
+        for (Shop shop : shopService.myShopList(userId)) {
+            System.out.println(shop.getShopId());
+        }
+        return shopService.myShopList(userId);
+    }
+
+    //收藏列表图片
+    @RequestMapping("myReceive")
+    @ResponseBody
+    public void myRevice(String image, int user_id, HttpServletResponse response, HttpSession session) {
+        List<Shop> shops = shopService.myShopList(user_id);
         try {
-            for (Shop shop :shopService.shopList()){
-                if (name.equals(shop.getImage())) {
-                    //files.add(new File(shop.getImage()+""));
-                    File file = new File("D:\\software-course\\project training\\ACupOfJava\\Project\\刘净圆\\自习室服务端\\yike\\webapp\\images\\"+shop.getImage());
+            for (Shop shop : shops) {
+
+                if (image.equals(shop.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     System.out.println(file.getAbsolutePath());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
                     int len = 0;
-                    while ((len = fis.read())!=-1) {
+                    while ((len = fis.read()) != -1) {
                         os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    //商店详情页面
+    @RequestMapping("shopDetail")
+    @ResponseBody
+    public Shop shopDetail(@RequestParam(value = "shop_id") int shopId) {
+        return shopService.shopDetail(shopId);
+    }
+
+    @RequestMapping("shopDetailImage")
+    @ResponseBody
+    public void shopDetailImage(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
+        List<Shop> shops = shopService.shopList();
+        try {
+            for (Shop shop : shopService.shopList()) {
+                if (name.equals(shop.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
                     }
                     fis.close();
                     os.close();
@@ -94,23 +158,73 @@ public class ShopController {
         }
     }
 
-    @RequestMapping("findMyLikes")
+
+
+    //实现热门:
+
+    //实现热门：
+    //（1）更新Stars
+
+    @RequestMapping("updateStars")
     @ResponseBody
-    public List<Shop> findMyLikes(int user_id) {
-        return  shopService.myShopList(user_id);
+    public void updateStars(@RequestParam("shop_id") int shopId, @RequestParam("newStars") int newStars) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("shop_id", shopId);
+        map.put("newStars", newStars);
+        shopService.updateStars(map);
+
+    }
+
+    //实现热门：
+    //(2)根据Stars从大到小排序
+    @RequestMapping("hot")
+    @ResponseBody
+    public List<Shop> hot(){
+
+        return shopService.hotList();
     }
 
 
-    @RequestMapping("myReceive")
+    //实现近期
+    //(1)加入预约
+    @RequestMapping("addAppointment")
     @ResponseBody
-    public void myRevice(String image, int user_id , HttpServletResponse response){
-        List<Shop> shops = shopService.myShopList(user_id);
+    public void addLikes(@RequestParam(value = "user_id") int userId, @RequestParam(value = "shop_id") int shopId) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("user_id", userId);
+        map.put("shop_id", shopId);
+        int row = shopService.addLikes(map);
+        System.out.println(row);
+    }
+
+    //实现近期
+    //(2)更新Likes
+    @RequestMapping("updateLikes")
+    @ResponseBody
+    public void updateLikes(@RequestParam("shop_id") int shopId, @RequestParam("newLikes") int newStars) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("shop_id", shopId);
+        map.put("newLikes", newStars);
+        shopService.updateLikes(map);
+    }
+
+
+    //(3)预约列表
+    @RequestMapping("recentList")
+    @ResponseBody
+    public List<Shop> recentList(@RequestParam(value = "user_id", required = false) int userId) {
+        return shopService.recentList(userId);
+    }
+    //(4)预约列表图片
+    @RequestMapping("recentImage")
+    @ResponseBody
+    public void recentImage(String image, int user_id, HttpServletResponse response, HttpSession session) {
+        List<Shop> shops = shopService.recentList(user_id);
         try {
             for (Shop shop : shops) {
 
                 if (image.equals(shop.getImage())) {
-                    //files.add(new File(shop.getImage()+""));
-                    File file = new File("D:\\software-course\\project training\\ACupOfJava\\Project\\刘净圆\\自习室服务端\\yike\\webapp\\images\\" + shop.getImage());
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     System.out.println(file.getAbsolutePath());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
@@ -133,46 +247,96 @@ public class ShopController {
 
 
 
-
-
-
-
-
-
-    @Test
-    public void test1(){
-        List<Shop> shops = shopService.shopList();
-        for (Shop shop : shops) {
-            System.out.println(shop.toString());
-        }
+    //与用户建立聊天关系的商家列表
+    @RequestMapping("talkList")
+    @ResponseBody
+    public List<Shop> talkList(@RequestParam("user_id") int userId){
+        Jedis jedis = JedisUtil.geyJedis();
+        Set<String> friends = jedis.smembers("friends_" + userId);
+        List<String> list = new ArrayList<>(friends);
+        return shopService.talkList(list);
     }
 
-    @Test
-    public void Test() throws PropertyVetoException {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        ComboPooledDataSource source = new ComboPooledDataSource();
-        source.setDriverClass("com.mysql.jdbc.Driver");
-        /*source.setJdbcUrl("jdbc:mysql://123.57.63.212:3306/yike");
-        source.setUser("root");
-        source.setPassword("0814Xyr2000@me");*/
-        source.setJdbcUrl("jdbc:mysql://localhost:3306/yike");
-        source.setUser("root");
-        source.setPassword("");
-        jdbcTemplate.setDataSource(source);
-        List<Shop> query = jdbcTemplate.query("select * from shop",new BeanPropertyRowMapper<Shop>(Shop.class));
-        //List<Shop> query = jdbcTemplate.query("SELECT shop.* from user,shop,collection where user.user_id = collection.user_id and shop.shop_id = collection.shop_id and user.user_id = 1", new BeanPropertyRowMapper<Shop>(Shop.class));
-        for (Shop shop : query) {
-            System.out.println(shop.toString());
+    @RequestMapping("talkImage")
+    @ResponseBody
+    public void talkImage(String image, int user_id, HttpServletResponse response, HttpSession session) {
+        Jedis jedis = JedisUtil.geyJedis();
+        Set<String> friends = jedis.smembers("friends_" + user_id);
+        List<String> list = new ArrayList<>(friends);
+        List<Shop> shops = shopService.talkList(list);
+        try {
+            for (Shop shop : shops) {
 
+                if (image.equals(shop.getImage())) {
+                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+                    System.out.println(file.getAbsolutePath());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        //jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop1','img1.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        /*jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop2','img2.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop3','img3.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop4','img4.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop5','img5.jpg','sjz','2020-11-1','2020-12-31',1,1)");
-        jdbcTemplate.update("insert into shop (name,image,location,starttime,endtime,likes,stars) values ('shop6','img6.jpg','sjz','2020-11-1','2020-12-31',1,1)");*/
-        //jdbcTemplate.update("delete from shop");
+
     }
+
+
+
+    //展示上商店详情轮播图
+
+    @RequestMapping("banner")
+    @ResponseBody
+    public List<ImageBox> findbannerImages(@RequestParam(value = "shop_id") int shopId) {
+        return shopService.findbannerImagesById(shopId);
+    }
+
+
+    @RequestMapping("bannerImages")
+    @ResponseBody
+    public void bannerImages(@RequestParam(value = "image") String image, @RequestParam(value = "shop_id") int shopId, HttpServletResponse response, HttpSession session) {
+
+        try {
+            List<ImageBox> images = shopService.bannerImages(shopId);
+            for (ImageBox imageBox : images) {
+                System.out.println(imageBox.toString());
+                if (image.equals(imageBox.getImgName())) {
+                    File file = new File(session.getServletContext().getRealPath("/imageBox/") + imageBox.getImgName());
+                    System.out.println(file.getAbsolutePath());
+                    OutputStream os = response.getOutputStream();
+                    FileInputStream fis = new FileInputStream(file);
+                    int len = 0;
+                    while ((len = fis.read()) != -1) {
+                        os.write(len);
+                    }
+                    fis.close();
+                    os.close();
+                }
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //spinner筛选城市
+    @RequestMapping("selectCity")
+    @ResponseBody
+    public List<Shop> selectCity(@RequestParam(value = "location") String city) {
+        System.out.println(city);
+        return shopService.selectCity(city);
+    }
+
+
 }
 
 

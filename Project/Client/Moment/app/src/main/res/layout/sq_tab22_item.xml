@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_corner"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.example.myzixi.ZQImageViewRoundOval
+        android:id="@+id/tu1"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="2%"
+        app:layout_marginBottomPercent="2%"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_weight="2"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/tit1"
+        android:text="光年自习室"
+        android:textSize="21dp"
+        android:textColor="#ffffff"
+        app:layout_marginTopPercent="1%"
+        app:layout_marginLeftPercent="4%"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu2"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tit1"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="2%"
+        android:src="@drawable/date"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tit2"
+        android:textSize="12dp"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu2"
+        android:layout_below="@id/tit1"
+        app:layout_marginTopPercent="2%"
+        android:text="2020/09/01 7:30-18:00"
+        app:layout_marginLeftPercent="2%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu3"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tu2"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="0.5%"
+        android:src="@drawable/date"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textSize="12dp"
+        android:id="@+id/tit3"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu3"
+        android:layout_below="@id/tit2"
+        app:layout_marginTopPercent="1%"
+        android:text="2020/09/01 7:30-18:00"
+        app:layout_marginLeftPercent="2%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu4"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tu3"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="1.2%"
+        android:src="@drawable/dingwei"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tit4"
+        android:textSize="12dp"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu3"
+        android:layout_below="@id/tit3"
+        app:layout_marginTopPercent="1%"
+        android:text="石桥街中坚806室"
+        app:layout_marginLeftPercent="2%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu5"
+        android:layout_toRightOf="@id/tu1"
+        android:layout_below="@id/tu4"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="1.4%"
+        android:src="@drawable/put"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tit5"
+        android:textSize="12dp"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu5"
+        android:layout_below="@id/tit4"
+        app:layout_marginTopPercent="2%"
+        android:text="59"
+        app:layout_marginLeftPercent="2%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu6"
+        android:layout_toRightOf="@id/tit4"
+        android:layout_below="@id/tu4"
+        app:layout_widthPercent="3%"
+        app:layout_heightPercent="3%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginTopPercent="1.4%"
+        android:src="@drawable/xin"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tit6"
+        android:textSize="12dp"
+        android:textColor="#ffffff"
+        android:layout_toRightOf="@id/tu6"
+        android:layout_below="@id/tit4"
+        app:layout_marginTopPercent="2%"
+        android:text="58"
+        app:layout_marginLeftPercent="2%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/tu7"
+        android:layout_alignParentRight="true"
+        app:layout_widthPercent="5%"
+        app:layout_heightPercent="5%"
+        app:layout_marginTopPercent="9%"
+        app:layout_marginRightPercent="4%"
+        android:src="@drawable/ent1"
+        app:tint="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

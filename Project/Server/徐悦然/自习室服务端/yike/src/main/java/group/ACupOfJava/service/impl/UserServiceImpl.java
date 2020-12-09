@@ -48,11 +48,18 @@ public class UserServiceImpl implements UserService {
         return userDao.addTalkRelation(map);
     }
 
+    @Override
+    public User findUserById(int user_id) {
+        return userDao.findUserById(user_id);
+    }
+
 
     public User addUser(Map<String,String> map){
         return userDao.addUser(map);
     }
 
     public User getUserInfo(String email){return userDao.getUserInfo(email);}
+
+
 
 }
