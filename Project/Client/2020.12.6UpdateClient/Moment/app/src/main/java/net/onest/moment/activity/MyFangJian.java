@@ -26,6 +26,8 @@ import net.onest.moment.adapter.RoomAdapter;
 import net.onest.moment.entity.Room;
 import net.onest.moment.manager.ServerConfig;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -102,7 +104,7 @@ public class MyFangJian extends AppCompatActivity{
             }
         });
 
-        imageButton2 =findViewById(R.id.more1);
+        imageButton2 =findViewById(R.id.collection);
         imageButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,9 +112,24 @@ public class MyFangJian extends AppCompatActivity{
                     Intent intent = getIntent();
                     String shop_id = intent.getStringExtra("shop_id");
                     String user_id = "2"; //由其他页面传过来,这里暂时用固定值
-                    URL url = new URL(ServerConfig.SERVER_HOME + "shop/addCollection?user_id=" + user_id + "&shop_id=" + shop_id);
-                    InputStream is = url.openStream();
-                    is.close();
+                    Log.e("onClick: shop_id", shop_id);
+                    Log.e( "onClick: user_id", user_id);
+                    Request request = new Request.Builder()
+                            .url(ServerConfig.SERVER_HOME + "shop/addCollection?user_id=" + user_id + "&shop_id=" + shop_id)
+                            .get()
+                            .build();
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+                        }
+                    });
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
