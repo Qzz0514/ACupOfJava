@@ -159,7 +159,11 @@ public class UserController {
                     // 调用邮箱验证
                     MailUtil.sendMail(email,
                             "此邮件仅为邮箱注册使用，如非本人，无视即可。<br> 开启验证：" +
+<<<<<<< HEAD
+                                    "<a href=\"http://localhost:8080/yike/user/makesure?code=" + md5Str + "\" />点击激活账号</a>");
+=======
                                     "<a href=\"http://123.57.63.212:8080/yike/user/makesure?code=" + md5Str + "\" />点击激活账号</a>");
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
                     return "ready to makesure";
                 } else {
                     return "this mail has been registerd!";
@@ -199,6 +203,10 @@ public class UserController {
         System.out.println(row);
     }
 
+<<<<<<< HEAD
+
+
+=======
 
     //上传用户头像
     @RequestMapping("uploadUserImage")
@@ -233,6 +241,7 @@ public class UserController {
         User user = userService.findUserById(userId);
         return user;
     }
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
 
 
 

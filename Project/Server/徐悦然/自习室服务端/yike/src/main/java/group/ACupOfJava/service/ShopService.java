@@ -26,6 +26,8 @@ public interface ShopService {
     public List<Shop> talkList(List<String> list);
     public List<Shop> recentList(int id);
 
+<<<<<<< HEAD
+=======
     public List<ImageBox> findbannerImagesById(int shop_id);
     public List<ImageBox> bannerImages(int shop_id);
     public List<Shop> selectCity(String location);
@@ -33,6 +35,7 @@ public interface ShopService {
 
 
 
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
 
 
 }

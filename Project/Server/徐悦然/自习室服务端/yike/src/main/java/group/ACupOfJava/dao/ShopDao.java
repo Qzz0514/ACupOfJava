@@ -32,10 +32,20 @@ public interface ShopDao {
     public int updateStars(Map<String, Integer> map);
     public List<Shop> hotList();
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
     public int addLikes(Map<String,Integer> map);
     public int updateLikes(Map<String, Integer> map);
     public List<Shop> recentList(int id);
 
+<<<<<<< HEAD
+
+
+    public List<Shop> talkList(List<String> list);
+=======
     public List<Shop> talkList(List<String> list);
 
 
@@ -45,6 +55,7 @@ public interface ShopDao {
     public List<Shop> selectCity(String location);
 
 
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
 
 
 

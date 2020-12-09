@@ -34,6 +34,10 @@
     <select id="recentList" resultType="group.ACupOfJava.pojo.Shop" parameterType="int">
         SELECT distinct shop.* from user,shop,appointment where user.user_id = appointment.user_id and shop.shop_id = appointment.shop_id and user.user_id = #{id}
     </select>
+<<<<<<< HEAD
+
+
+=======
     <select id="bannerImages" resultType="group.ACupOfJava.pojo.ImageBox" parameterType="int">
         select * from imagebox where shop_id = #{shop_id};
     </select>
@@ -43,6 +47,7 @@
     <select id="selectCity" resultType="group.ACupOfJava.pojo.Shop" parameterType="string">
         select * from shop where location like concat('%',#{location},'%')
     </select>
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
 
 
 </mapper>

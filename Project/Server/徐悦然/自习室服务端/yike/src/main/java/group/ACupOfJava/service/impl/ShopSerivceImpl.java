@@ -70,6 +70,8 @@ public class ShopSerivceImpl implements ShopService {
         return shopDao.recentList(id);
     }
 
+<<<<<<< HEAD
+=======
     @Override
     public List<ImageBox> findbannerImagesById(int shop_id) {
         return shopDao.findbannerImagesById(shop_id);
@@ -86,5 +88,6 @@ public class ShopSerivceImpl implements ShopService {
         return shopDao.selectCity(location);
     }
 
+>>>>>>> 29b4465a9eced31f7d87ed69c4d0b00b790f556e
 
 }
