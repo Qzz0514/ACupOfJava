@@ -45,5 +45,8 @@
     <select id="selectCity" resultType="group.ACupOfJava.pojo.Shop" parameterType="string">
         select * from shop where location like concat('%',#{location},'%')
     </select>
+    <select id="activityShop" resultType="group.ACupOfJava.pojo.Shop">
+        SELECT shop.* from shop,shop_activity where shop.shop_id = shop_activity.shop_id
+    </select>
 
 </mapper>

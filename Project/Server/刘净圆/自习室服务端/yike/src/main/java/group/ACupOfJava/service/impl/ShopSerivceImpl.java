@@ -85,4 +85,9 @@ public class ShopSerivceImpl implements ShopService {
         return shopDao.selectCity(location);
     }
 
+    @Override
+    public List<Shop> activityShop() {
+        return shopDao.activityShop();
+    }
+
 }

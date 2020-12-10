@@ -4,6 +4,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import group.ACupOfJava.pojo.ImageBox;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.service.ShopService;
+import group.ACupOfJava.util.ImageUtil;
 import group.ACupOfJava.util.JedisUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,25 +52,20 @@ public class ShopController {
     @RequestMapping("receive")
     @ResponseBody
     public void receive(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
-        List<Shop> shops = shopService.shopList();
-        try {
-            for (Shop shop : shopService.shopList()) {
-                if (name.equals(shop.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
-                    OutputStream os = response.getOutputStream();
-                    FileInputStream fis = new FileInputStream(file);
-                    int len = 0;
-                    while ((len = fis.read()) != -1) {
-                        os.write(len);
-                    }
-                    fis.close();
-                    os.close();
+        for (Shop shop : shopService.shopList()) {
+            if (name.equals(shop.getImage())) {
+                ImageUtil.dowmloadImage("images",shop.getImage(),response,session);
+                /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+                OutputStream os = response.getOutputStream();
+                FileInputStream fis = new FileInputStream(file);
+                int len = 0;
+                while ((len = fis.read()) != -1) {
+                    os.write(len);
                 }
+                fis.close();
+                os.close();*/
+
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -86,6 +82,7 @@ public class ShopController {
 
 
     }
+
     //收藏列表
     @RequestMapping("findMyLikes")
     @ResponseBody
@@ -101,11 +98,11 @@ public class ShopController {
     @ResponseBody
     public void myRevice(String image, int user_id, HttpServletResponse response, HttpSession session) {
         List<Shop> shops = shopService.myShopList(user_id);
-        try {
-            for (Shop shop : shops) {
+        for (Shop shop : shops) {
 
-                if (image.equals(shop.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+            if (image.equals(shop.getImage())) {
+                ImageUtil.dowmloadImage("images", shop.getImage(), response, session);
+                    /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     System.out.println(file.getAbsolutePath());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
@@ -114,13 +111,8 @@ public class ShopController {
                         os.write(len);
                     }
                     fis.close();
-                    os.close();
-                }
+                    os.close();*/
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -135,10 +127,10 @@ public class ShopController {
     @ResponseBody
     public void shopDetailImage(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
         List<Shop> shops = shopService.shopList();
-        try {
-            for (Shop shop : shopService.shopList()) {
-                if (name.equals(shop.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+        for (Shop shop : shopService.shopList()) {
+            if (name.equals(shop.getImage())) {
+                ImageUtil.dowmloadImage("images", shop.getImage(), response, session);
+                    /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
                     int len = 0;
@@ -146,18 +138,11 @@ public class ShopController {
                         os.write(len);
                     }
                     fis.close();
-                    os.close();
-
-                }
-
+                    os.close();*/
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
-
 
 
     //实现热门:
@@ -179,7 +164,7 @@ public class ShopController {
     //(2)根据Stars从大到小排序
     @RequestMapping("hot")
     @ResponseBody
-    public List<Shop> hot(){
+    public List<Shop> hot() {
 
         return shopService.hotList();
     }
@@ -215,16 +200,17 @@ public class ShopController {
     public List<Shop> recentList(@RequestParam(value = "user_id", required = false) int userId) {
         return shopService.recentList(userId);
     }
+
     //(4)预约列表图片
     @RequestMapping("recentImage")
     @ResponseBody
     public void recentImage(String image, int user_id, HttpServletResponse response, HttpSession session) {
         List<Shop> shops = shopService.recentList(user_id);
-        try {
-            for (Shop shop : shops) {
+        for (Shop shop : shops) {
 
-                if (image.equals(shop.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
+            if (image.equals(shop.getImage())) {
+                ImageUtil.dowmloadImage("images", shop.getImage(), response, session);
+                    /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
                     System.out.println(file.getAbsolutePath());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
@@ -233,24 +219,16 @@ public class ShopController {
                         os.write(len);
                     }
                     fis.close();
-                    os.close();
-                }
+                    os.close();*/
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-
-
-
 
 
     //与用户建立聊天关系的商家列表
     @RequestMapping("talkList")
     @ResponseBody
-    public List<Shop> talkList(@RequestParam("user_id") int userId){
+    public List<Shop> talkList(@RequestParam("user_id") int userId) {
         Jedis jedis = JedisUtil.geyJedis();
         Set<String> friends = jedis.smembers("friends_" + userId);
         List<String> list = new ArrayList<>(friends);
@@ -289,7 +267,6 @@ public class ShopController {
     }
 
 
-
     //展示上商店详情轮播图
 
     @RequestMapping("banner")
@@ -308,7 +285,8 @@ public class ShopController {
             for (ImageBox imageBox : images) {
                 System.out.println(imageBox.toString());
                 if (image.equals(imageBox.getImgName())) {
-                    File file = new File(session.getServletContext().getRealPath("/imageBox/") + imageBox.getImgName());
+                    ImageUtil.dowmloadImage("imageBox",imageBox.getImgName(),response,session);
+                    /*File file = new File(session.getServletContext().getRealPath("/imageBox/") + imageBox.getImgName());
                     System.out.println(file.getAbsolutePath());
                     OutputStream os = response.getOutputStream();
                     FileInputStream fis = new FileInputStream(file);
@@ -317,7 +295,7 @@ public class ShopController {
                         os.write(len);
                     }
                     fis.close();
-                    os.close();
+                    os.close();*/
                 }
             }
 
@@ -336,6 +314,11 @@ public class ShopController {
         return shopService.selectCity(city);
     }
 
+    @RequestMapping("activityShop")
+    @ResponseBody
+    public List<Shop> activityShop(){
+        return shopService.activityShop();
+    }
 
 }
 

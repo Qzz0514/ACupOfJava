@@ -168,7 +168,7 @@ public class SecondFragment extends Fragment {
         //1.创建RequestBody对象
         //2.创建请求对象
         Request request = new Request.Builder()
-                .url(ServerConfig.SERVER_HOME + "shop/find")
+                .url(ServerConfig.SERVER_HOME + "shop/activityShop")
                 .get()
                 .build();
         //3. 创建CALL对象

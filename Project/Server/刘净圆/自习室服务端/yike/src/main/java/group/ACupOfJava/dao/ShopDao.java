@@ -41,6 +41,7 @@ public interface ShopDao {
     public List<ImageBox> bannerImages(int shop_id);
 
     public List<Shop> selectCity(String location);
+    public List<Shop> activityShop();
 
 
 
