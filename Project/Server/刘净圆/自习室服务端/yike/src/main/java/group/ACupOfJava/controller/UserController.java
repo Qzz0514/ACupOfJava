@@ -8,6 +8,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import group.ACupOfJava.pojo.Shop;
 import group.ACupOfJava.pojo.User;
 import group.ACupOfJava.service.UserService;
+import group.ACupOfJava.util.ImageUtil;
 import group.ACupOfJava.util.JedisUtil;
 import group.ACupOfJava.util.MailUtil;
 import group.ACupOfJava.util.StringUtil;
@@ -113,25 +114,10 @@ public class UserController {
     @ResponseBody
     public void myRevice(String image, @RequestParam("user_id") int userId, HttpServletResponse response, HttpSession session){
         List<Shop> shops = userService.talkList(userId);
-        try {
-            for (Shop shop : shops) {
-
-                if (image.equals(shop.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
-                    OutputStream os = response.getOutputStream();
-                    FileInputStream fis = new FileInputStream(file);
-                    int len = 0;
-                    while ((len = fis.read()) != -1) {
-                        os.write(len);
-                    }
-                    fis.close();
-                    os.close();
-                }
+        for (Shop shop : shops) {
+            if (image.equals(shop.getImage())) {
+                ImageUtil.dowmloadImage("images", shop.getImage(), response, session);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -208,25 +194,10 @@ public class UserController {
     @RequestMapping("uploadUserImage")
     @ResponseBody
     public void uploadUserImage(@RequestParam(value = "image", required = false) String name, HttpServletResponse response, HttpSession session) {
-        try {
-            for (User user:userService.find()) {
-                if (name.equals(user.getImage())) {
-                    File file = new File(session.getServletContext().getRealPath("/headers/") + user.getImage());
-                    System.out.println(file.toString());
-                    OutputStream os = response.getOutputStream();
-                    FileInputStream fis = new FileInputStream(file);
-                    int len = 0;
-                    while ((len = fis.read()) != -1) {
-                        os.write(len);
-                    }
-                    fis.close();
-                    os.close();
-                }
+        for (User user:userService.find()) {
+            if (name.equals(user.getImage())) {
+                ImageUtil.dowmloadImage("headers",user.getImage(),response,session);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

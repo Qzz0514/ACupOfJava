@@ -55,16 +55,6 @@ public class ShopController {
         for (Shop shop : shopService.shopList()) {
             if (name.equals(shop.getImage())) {
                 ImageUtil.dowmloadImage("images",shop.getImage(),response,session);
-                /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
-                OutputStream os = response.getOutputStream();
-                FileInputStream fis = new FileInputStream(file);
-                int len = 0;
-                while ((len = fis.read()) != -1) {
-                    os.write(len);
-                }
-                fis.close();
-                os.close();*/
-
             }
         }
     }
@@ -102,16 +92,6 @@ public class ShopController {
 
             if (image.equals(shop.getImage())) {
                 ImageUtil.dowmloadImage("images", shop.getImage(), response, session);
-                    /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
-                    System.out.println(file.getAbsolutePath());
-                    OutputStream os = response.getOutputStream();
-                    FileInputStream fis = new FileInputStream(file);
-                    int len = 0;
-                    while ((len = fis.read()) != -1) {
-                        os.write(len);
-                    }
-                    fis.close();
-                    os.close();*/
             }
         }
     }
@@ -130,15 +110,6 @@ public class ShopController {
         for (Shop shop : shopService.shopList()) {
             if (name.equals(shop.getImage())) {
                 ImageUtil.dowmloadImage("images", shop.getImage(), response, session);
-                    /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
-                    OutputStream os = response.getOutputStream();
-                    FileInputStream fis = new FileInputStream(file);
-                    int len = 0;
-                    while ((len = fis.read()) != -1) {
-                        os.write(len);
-                    }
-                    fis.close();
-                    os.close();*/
             }
 
         }
@@ -210,16 +181,6 @@ public class ShopController {
 
             if (image.equals(shop.getImage())) {
                 ImageUtil.dowmloadImage("images", shop.getImage(), response, session);
-                    /*File file = new File(session.getServletContext().getRealPath("/images/") + shop.getImage());
-                    System.out.println(file.getAbsolutePath());
-                    OutputStream os = response.getOutputStream();
-                    FileInputStream fis = new FileInputStream(file);
-                    int len = 0;
-                    while ((len = fis.read()) != -1) {
-                        os.write(len);
-                    }
-                    fis.close();
-                    os.close();*/
             }
         }
     }
@@ -286,20 +247,8 @@ public class ShopController {
                 System.out.println(imageBox.toString());
                 if (image.equals(imageBox.getImgName())) {
                     ImageUtil.dowmloadImage("imageBox",imageBox.getImgName(),response,session);
-                    /*File file = new File(session.getServletContext().getRealPath("/imageBox/") + imageBox.getImgName());
-                    System.out.println(file.getAbsolutePath());
-                    OutputStream os = response.getOutputStream();
-                    FileInputStream fis = new FileInputStream(file);
-                    int len = 0;
-                    while ((len = fis.read()) != -1) {
-                        os.write(len);
-                    }
-                    fis.close();
-                    os.close();*/
                 }
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
